@@ -1,4 +1,8 @@
-import 'package:evently_app/features/home/home_tap.dart';
+import 'package:evently_app/features/home/taps/home_view.dart';
+import 'package:evently_app/features/login/login_view.dart';
+import 'package:evently_app/features/onboarding/customize_view.dart';
+import 'package:evently_app/features/onboarding/onboarding_view.dart';
+import 'package:evently_app/features/register/register_view.dart';
 import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:evently_app/providers/app_language_provider.dart';
 import 'package:evently_app/providers/app_theme_provider.dart';
@@ -28,8 +32,14 @@ class EventlyApp extends StatelessWidget {
     var themeProvider = Provider.of<AppThemeProvider>(context);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.homeRouteName,
-      routes: {AppRoutes.homeRouteName: (context) => HomeTap()},
+      initialRoute: AppRoutes.cusomizeRouteName,
+      routes: {
+        AppRoutes.cusomizeRouteName: (context) => CustomizeView(),
+        AppRoutes.onboardingRouteName: (context) => OnboardingView(),
+        AppRoutes.homeRouteName: (context) => HomeView(),
+        AppRoutes.loginRouteName: (context) => LoginView(),
+        AppRoutes.registerRouteName: (context) => RegisterView(),
+      },
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       locale: Locale(languageProvider.appLanguage),

@@ -19,7 +19,7 @@ class AppTheme {
       headlineLarge: AppStyles.semi20Black,
       headlineMedium: AppStyles.medium16Black,
       headlineSmall: AppStyles.semi24MainLightColor,
-      bodyLarge: AppStyles.regular14Grey,
+      bodyLarge: AppStyles.regular16Grey,
       bodyMedium: AppStyles.semi16MainLightColor,
       bodySmall: AppStyles.medium14Black,
       labelLarge: AppStyles.semi14MainLightColor,
@@ -28,6 +28,7 @@ class AppTheme {
       titleLarge: AppStyles.regular14MainLightColor,
       titleMedium: AppStyles.medium20Black,
       titleSmall: AppStyles.medium18Black,
+      displaySmall: AppStyles.semi14MainLightColor,
     ),
   );
   static final ThemeData darkTheme = ThemeData(
@@ -46,15 +47,16 @@ class AppTheme {
       headlineLarge: AppStyles.semi20White,
       headlineMedium: AppStyles.medium16White,
       headlineSmall: AppStyles.semi24White,
-      bodyLarge: AppStyles.regular14WhiteDarkColor,
+      bodyLarge: AppStyles.regular16WhiteDarkColor,
       bodyMedium: AppStyles.semi16MainDarkColor,
       bodySmall: AppStyles.medium14White,
       labelLarge: AppStyles.semi14MainDarkColor,
       labelMedium: AppStyles.medium16MainDarkColor,
-      labelSmall: AppStyles.medium18MainDarkColor,
+      labelSmall: AppStyles.medium18White,
       titleLarge: AppStyles.regular14WhiteColor,
       titleMedium: AppStyles.medium20WhiteDarkColor,
       titleSmall: AppStyles.medium18White,
+      displaySmall: AppStyles.semi14White,
     ),
   );
 }
