@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 class AppTheme {
   static final ThemeData lightTheme = ThemeData(
     scaffoldBackgroundColor: AppColors.lightBgColor,
+    canvasColor: AppColors.whiteColor,
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: AppColors.whiteColor,
       selectedItemColor: AppColors.mainLightColor,
@@ -31,6 +32,7 @@ class AppTheme {
   );
   static final ThemeData darkTheme = ThemeData(
     scaffoldBackgroundColor: AppColors.darkBgColor,
+    canvasColor: AppColors.inputDarkColor,
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: AppColors.darkBgColor,
       selectedItemColor: AppColors.mainDarkColor,
@@ -50,7 +52,7 @@ class AppTheme {
       labelLarge: AppStyles.semi14MainDarkColor,
       labelMedium: AppStyles.medium16MainDarkColor,
       labelSmall: AppStyles.medium18MainDarkColor,
-      titleLarge: AppStyles.regular14MainDarkColor,
+      titleLarge: AppStyles.regular14WhiteColor,
       titleMedium: AppStyles.medium20WhiteDarkColor,
       titleSmall: AppStyles.medium18White,
     ),
