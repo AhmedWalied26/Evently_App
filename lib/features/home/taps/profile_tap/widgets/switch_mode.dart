@@ -9,28 +9,34 @@ class SwitchMode extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var themeProvider = Provider.of<AppThemeProvider>(context);
-    return Switch(
-      value: themeProvider.appTheme == ThemeMode.dark,
-      onChanged: (value) {
-        themeProvider.changeTheme(value ? .dark : .light);
-      },
-      thumbColor: WidgetStateProperty.resolveWith((states) {
-        return AppColors.whiteColor;
-      }),
-      trackColor: WidgetStateProperty.resolveWith((states) {
-        if (states.contains(WidgetState.selected)) {
+    return Transform.translate(
+      offset: Offset(
+        Directionality.of(context) == TextDirection.ltr ? 8 : -8,
+        0,
+      ),
+      child: Switch(
+        value: themeProvider.appTheme == ThemeMode.dark,
+        onChanged: (value) {
+          themeProvider.changeTheme(value ? .dark : .light);
+        },
+        thumbColor: WidgetStateProperty.resolveWith((states) {
+          return AppColors.whiteColor;
+        }),
+        trackColor: WidgetStateProperty.resolveWith((states) {
+          if (states.contains(WidgetState.selected)) {
+            return themeProvider.isDark
+                ? AppColors.mainDarkColor
+                : AppColors.mainLightColor;
+          }
           return themeProvider.isDark
-              ? AppColors.mainDarkColor
-              : AppColors.mainLightColor;
-        }
-        return themeProvider.isDark
-            ? AppColors.lightGreyColor
-            : AppColors.grey200Color;
-      }),
-      trackOutlineColor: WidgetStateProperty.resolveWith((states) {
-        return AppColors.transparentColor;
-      }),
-      trackOutlineWidth: WidgetStateProperty.all(1),
+              ? AppColors.lightGreyColor
+              : AppColors.grey200Color;
+        }),
+        trackOutlineColor: WidgetStateProperty.resolveWith((states) {
+          return AppColors.transparentColor;
+        }),
+        trackOutlineWidth: WidgetStateProperty.all(1),
+      ),
     );
   }
 }

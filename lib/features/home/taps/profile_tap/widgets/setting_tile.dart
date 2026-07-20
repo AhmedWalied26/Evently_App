@@ -4,21 +4,34 @@ import 'package:flutter/material.dart';
 class SettingTile extends StatelessWidget {
   final String title;
   final Widget child;
-  const SettingTile({super.key, required this.title, required this.child});
+  final double horiMargin;
+
+  const SettingTile({
+    super.key,
+    required this.title,
+    required this.child,
+    required this.horiMargin,
+  });
 
   @override
   Widget build(BuildContext context) {
+    var height = context.height;
     var width = context.width;
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: width * 0.04),
+      height: height * 0.06,
+      padding: EdgeInsets.symmetric(horizontal: width * 0.04),
+      margin: .symmetric(horizontal: horiMargin),
       decoration: BoxDecoration(
-        borderRadius: .circular(16),
-        border: .all(color: Theme.of(context).disabledColor),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: Theme.of(context).disabledColor),
         color: Theme.of(context).canvasColor,
       ),
-      child: ListTile(
-        title: Text(title, style: Theme.of(context).textTheme.headlineMedium),
-        trailing: child,
+      child: Row(
+        mainAxisAlignment: .spaceBetween,
+        children: [
+          Text(title, style: Theme.of(context).textTheme.headlineMedium),
+          child,
+        ],
       ),
     );
   }
