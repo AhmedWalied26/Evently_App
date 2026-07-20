@@ -87,7 +87,11 @@ class _OnboardingViewState extends State<OnboardingView> {
                 title: currentPage != 2 ? 'Next' : 'Get Strated',
                 onTap: () {
                   currentPage == 2
-                      ? Navigator.pushNamed(context, AppRoutes.loginRouteName)
+                      ? Navigator.pushNamedAndRemoveUntil(
+                          context,
+                          AppRoutes.loginRouteName,
+                          (route) => false,
+                        )
                       : pageController.nextPage(
                           duration: Duration(milliseconds: 250),
                           curve: Curves.easeInOut,

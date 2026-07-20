@@ -26,7 +26,11 @@ class PageItem extends StatelessWidget {
     var themeProvider = Provider.of<AppThemeProvider>(context);
     return Column(
       children: [
-        Image.asset(themeProvider.isDark ? imageDark : imageLight),
+        Image.asset(
+          themeProvider.isDark ? imageDark : imageLight,
+          height: height * 0.43,
+          fit: .contain,
+        ),
         SizedBox(height: height * 0.008),
         SmoothPageIndicator(
           controller: pageController,

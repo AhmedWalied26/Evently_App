@@ -9,17 +9,8 @@ import 'package:evently_app/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class CustomizeView extends StatefulWidget {
+class CustomizeView extends StatelessWidget {
   const CustomizeView({super.key});
-
-  @override
-  State<CustomizeView> createState() => _CustomizeViewState();
-}
-
-class _CustomizeViewState extends State<CustomizeView> {
-  int selectedLang = 0;
-
-  int selectedMode = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -44,21 +35,25 @@ class _CustomizeViewState extends State<CustomizeView> {
                     : AppAssets.eventlyLogoLightImage,
                 height: 27,
               ),
+              SizedBox(height: height * 0.03),
               Image.asset(
                 themeProvider.isDark
                     ? AppAssets.onBoardingDarkImage1
                     : AppAssets.onBoardingLightImage1,
+                height: height * 0.43,
+                fit: .contain,
               ),
+              SizedBox(height: height * 0.04),
               Text(
                 'Personalize Your Experience',
                 style: Theme.of(context).textTheme.headlineLarge,
               ),
-              SizedBox(height: height * 0.01),
+              SizedBox(height: height * 0.02),
               Text(
-                'Choose your preferred theme and\nlanguage to get started with a\ncomfortable, tailored experience that suits\nyour style.',
+                'Choose your preferred theme and language to get started with a comfortable, tailored experience that suits your style.',
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
-              SizedBox(height: height * 0.016),
+              SizedBox(height: height * 0.03),
               Row(
                 spacing: width * 0.02,
                 children: [
@@ -70,24 +65,22 @@ class _CustomizeViewState extends State<CustomizeView> {
                   CustomSwitch(
                     isIcon: false,
                     text: AppLocalizations.of(context)!.english,
-                    isSelected: selectedLang == 0,
+                    isSelected: languageProvider.appLanguage == 'en',
                     onTap: () {
-                      selectedLang = 0;
                       languageProvider.changeLanguage('en');
                     },
                   ),
                   CustomSwitch(
                     isIcon: false,
                     text: AppLocalizations.of(context)!.arabic,
-                    isSelected: selectedLang == 1,
+                    isSelected: languageProvider.appLanguage == 'ar',
                     onTap: () {
-                      selectedLang = 1;
                       languageProvider.changeLanguage('ar');
                     },
                   ),
                 ],
               ),
-              SizedBox(height: height * 0.016),
+              SizedBox(height: height * 0.02),
               Row(
                 spacing: width * 0.02,
                 children: [
@@ -98,26 +91,22 @@ class _CustomizeViewState extends State<CustomizeView> {
                   Spacer(),
                   CustomSwitch(
                     isIcon: true,
-                    child: selectedMode == 0
+                    child: !themeProvider.isDark
                         ? Icons.light_mode
                         : Icons.light_mode_outlined,
-                    isSelected: selectedMode == 0,
+                    isSelected: !themeProvider.isDark,
                     onTap: () {
-                      selectedMode = 0;
                       themeProvider.changeTheme(.light);
-                      setState(() {});
                     },
                   ),
                   CustomSwitch(
                     isIcon: true,
-                    child: selectedMode == 1
+                    child: themeProvider.isDark
                         ? Icons.dark_mode
                         : Icons.dark_mode_outlined,
-                    isSelected: selectedMode == 1,
+                    isSelected: themeProvider.isDark,
                     onTap: () {
-                      selectedMode = 1;
                       themeProvider.changeTheme(.dark);
-                      setState(() {});
                     },
                   ),
                 ],
