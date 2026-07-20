@@ -1,4 +1,4 @@
-import 'package:evently_app/features/home/taps/home_view.dart';
+import 'package:evently_app/features/home/home_view.dart';
 import 'package:evently_app/features/login/login_view.dart';
 import 'package:evently_app/features/login/reset_password.dart';
 import 'package:evently_app/features/onboarding/customize_view.dart';
@@ -33,7 +33,7 @@ class EventlyApp extends StatelessWidget {
     var themeProvider = Provider.of<AppThemeProvider>(context);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.loginRouteName,
+      initialRoute: AppRoutes.cusomizeRouteName,
       routes: {
         AppRoutes.cusomizeRouteName: (context) => CustomizeView(),
         AppRoutes.onboardingRouteName: (context) => OnboardingView(),
