@@ -18,8 +18,8 @@ class SkipButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         alignment: hasIcon ? .centerRight : .center,
-        height: height * 0.032,
-        width: hasIcon ? width * 0.07 : width * 0.14,
+        height: height * 0.034,
+        width: hasIcon ? width * 0.08 : width * 0.14,
         decoration: BoxDecoration(
           color: Theme.of(context).canvasColor,
           borderRadius: BorderRadius.circular(8),
@@ -28,7 +28,7 @@ class SkipButton extends StatelessWidget {
         child: hasIcon
             ? Icon(
                 Icons.arrow_back_ios,
-                size: 22,
+                size: 24,
                 color: themeProvider.isDark
                     ? AppColors.whiteColor
                     : AppColors.mainLightColor,

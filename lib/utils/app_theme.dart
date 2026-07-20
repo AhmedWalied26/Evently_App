@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 class AppTheme {
   static final ThemeData lightTheme = ThemeData(
     scaffoldBackgroundColor: AppColors.lightBgColor,
-    canvasColor: AppColors.whiteColor,
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: AppColors.whiteColor,
       selectedItemColor: AppColors.mainLightColor,
@@ -14,7 +13,9 @@ class AppTheme {
       unselectedLabelStyle: AppStyles.regular12GreyColor,
     ),
     cardColor: AppColors.mainLightColor,
+    canvasColor: AppColors.whiteColor,
     dividerColor: AppColors.strokeWhiteColor,
+    disabledColor: AppColors.strokeWhiteColor,
     textTheme: TextTheme(
       headlineLarge: AppStyles.semi20Black,
       headlineMedium: AppStyles.medium16Black,
@@ -29,11 +30,12 @@ class AppTheme {
       titleMedium: AppStyles.medium20Black,
       titleSmall: AppStyles.medium18Black,
       displaySmall: AppStyles.semi14MainLightColor,
+      displayMedium: AppStyles.regular14Grey,
+      displayLarge: AppStyles.medium18MainLightColor,
     ),
   );
   static final ThemeData darkTheme = ThemeData(
     scaffoldBackgroundColor: AppColors.darkBgColor,
-    canvasColor: AppColors.inputDarkColor,
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: AppColors.darkBgColor,
       selectedItemColor: AppColors.mainDarkColor,
@@ -42,7 +44,9 @@ class AppTheme {
       unselectedLabelStyle: AppStyles.regular12GreyColor,
     ),
     cardColor: AppColors.mainDarkColor,
+    canvasColor: AppColors.inputDarkColor,
     dividerColor: AppColors.mainLightColor,
+    disabledColor: AppColors.strokeDarkColor,
     textTheme: TextTheme(
       headlineLarge: AppStyles.semi20White,
       headlineMedium: AppStyles.medium16White,
@@ -57,6 +61,8 @@ class AppTheme {
       titleMedium: AppStyles.medium20WhiteDarkColor,
       titleSmall: AppStyles.medium18White,
       displaySmall: AppStyles.semi14White,
+      displayMedium: AppStyles.regular14WhiteDarkColor,
+      displayLarge: AppStyles.medium18MainDarkColor,
     ),
   );
 }

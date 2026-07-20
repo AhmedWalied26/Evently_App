@@ -43,6 +43,7 @@ dependencies:
   flutter_native_splash: ^2.4.8
   flutter_launcher_icons: ^0.14.4
   smooth_page_indicator: ^2.0.1
+  flutter_svg: ^2.3.0
 
 dev_dependencies:
   flutter_test:

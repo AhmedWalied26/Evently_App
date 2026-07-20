@@ -73,4 +73,6 @@ class AppAssets {
   static const String profileFillLightIcon =
       'assets/svg/profile_fill_light.svg';
   static const String profileFillDarkIcon = 'assets/svg/profile_fill_dark.svg';
+
+  static const String googleImage = 'assets/images/google_image.png';
 }
