@@ -5,6 +5,6 @@ class HomeTap extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(backgroundColor: Theme.of(context).scaffoldBackgroundColor);
+    return Container();
   }
 }
