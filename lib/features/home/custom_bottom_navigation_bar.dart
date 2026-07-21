@@ -1,3 +1,4 @@
+import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:evently_app/providers/app_theme_provider.dart';
 import 'package:evently_app/utils/app_assets.dart';
 import 'package:evently_app/utils/size_utils.dart';
@@ -33,7 +34,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
         items: [
           BottomNavigationBarItem(
             icon: SvgPicture.asset(AppAssets.homeIcon),
-            label: 'Home',
+            label: AppLocalizations.of(context)!.home,
             activeIcon: SvgPicture.asset(
               themeProvider.isDark
                   ? AppAssets.homeFillDarkIcon
@@ -42,7 +43,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(AppAssets.favoriteIcon),
-            label: 'Favorite',
+            label: AppLocalizations.of(context)!.favorite,
             activeIcon: SvgPicture.asset(
               themeProvider.isDark
                   ? AppAssets.favoriteFillDarkIcon
@@ -51,7 +52,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(AppAssets.profileIcon),
-            label: 'Profile',
+            label: AppLocalizations.of(context)!.profile,
             activeIcon: SvgPicture.asset(
               themeProvider.isDark
                   ? AppAssets.profileFillDarkIcon

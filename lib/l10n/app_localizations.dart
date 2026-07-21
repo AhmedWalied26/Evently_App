@@ -133,6 +133,216 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Light'**
   String get light;
+
+  /// No description provided for @home.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get home;
+
+  /// No description provided for @favorite.
+  ///
+  /// In en, this message translates to:
+  /// **'Favorite'**
+  String get favorite;
+
+  /// No description provided for @profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profile;
+
+  /// No description provided for @logout.
+  ///
+  /// In en, this message translates to:
+  /// **'Logout'**
+  String get logout;
+
+  /// No description provided for @login.
+  ///
+  /// In en, this message translates to:
+  /// **'Login'**
+  String get login;
+
+  /// No description provided for @signup.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign up'**
+  String get signup;
+
+  /// No description provided for @loginWithGoogle.
+  ///
+  /// In en, this message translates to:
+  /// **'Login with Google'**
+  String get loginWithGoogle;
+
+  /// No description provided for @signupWithGoogle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign up with Google'**
+  String get signupWithGoogle;
+
+  /// No description provided for @loginToYourAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Login to your account'**
+  String get loginToYourAccount;
+
+  /// No description provided for @createYourAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Create your account'**
+  String get createYourAccount;
+
+  /// No description provided for @enterYourName.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your name'**
+  String get enterYourName;
+
+  /// No description provided for @enterYourEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your email'**
+  String get enterYourEmail;
+
+  /// No description provided for @enterYourPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your password'**
+  String get enterYourPassword;
+
+  /// No description provided for @confirmYourPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm your password'**
+  String get confirmYourPassword;
+
+  /// No description provided for @forgotPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Forget Password'**
+  String get forgotPassword;
+
+  /// No description provided for @forgotPasswordQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Forget Password?'**
+  String get forgotPasswordQuestion;
+
+  /// No description provided for @resetPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset password'**
+  String get resetPassword;
+
+  /// No description provided for @alreadyHaveAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Already have an account?'**
+  String get alreadyHaveAccount;
+
+  /// No description provided for @dontHaveAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Don\'t have an account ?'**
+  String get dontHaveAccount;
+
+  /// No description provided for @or.
+  ///
+  /// In en, this message translates to:
+  /// **'Or'**
+  String get or;
+
+  /// No description provided for @skip.
+  ///
+  /// In en, this message translates to:
+  /// **'Skip'**
+  String get skip;
+
+  /// No description provided for @next.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get next;
+
+  /// No description provided for @getStarted.
+  ///
+  /// In en, this message translates to:
+  /// **'Get started'**
+  String get getStarted;
+
+  /// No description provided for @letsStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Let\'s start'**
+  String get letsStart;
+
+  /// No description provided for @chooseLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose Language'**
+  String get chooseLanguage;
+
+  /// No description provided for @selectPreferredLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Select your preferred language'**
+  String get selectPreferredLanguage;
+
+  /// No description provided for @darkMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark mode'**
+  String get darkMode;
+
+  /// No description provided for @connectWithFriendsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Connect with Friends & Share Moments'**
+  String get connectWithFriendsTitle;
+
+  /// No description provided for @connectWithFriendsDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Make every event memorable by sharing the experiences with others. Our platform lets you invite friends, keep everyone in the loop, and celebrate moments together. Capture and share the excitement with your network, so you can relive the highlights and cherish the memories.'**
+  String get connectWithFriendsDescription;
+
+  /// No description provided for @eventPlanningTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Effortless Event Planning'**
+  String get eventPlanningTitle;
+
+  /// No description provided for @eventPlanningDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Take the hassle out of organizing events with our all-in-one planning tools. From setting up invites and managing RSVPs to scheduling reminders and coordinating details, we\'ve got you covered. Plan with ease and focus on what matters - creating an unforgettable experience for you and your guests.'**
+  String get eventPlanningDescription;
+
+  /// No description provided for @findEventsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Find Events That Inspire You'**
+  String get findEventsTitle;
+
+  /// No description provided for @findEventsDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Dive into a world of events crafted to fit your unique interests. Whether you\'re into live music, art workshops, professional networking, or simply discovering new experiences, we have something for everyone. Our curated recommendations will help you explore, connect and make the most of every opportunity around you.'**
+  String get findEventsDescription;
+
+  /// No description provided for @personalizeExperienceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Personalize Your Experience'**
+  String get personalizeExperienceTitle;
+
+  /// No description provided for @personalizeExperienceDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose your preferred theme and language to get started with a comfortable, tailored experience that suits your style.'**
+  String get personalizeExperienceDescription;
 }
 
 class _AppLocalizationsDelegate

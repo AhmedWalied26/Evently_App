@@ -1,3 +1,4 @@
+import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:evently_app/providers/app_theme_provider.dart';
 import 'package:evently_app/utils/app_assets.dart';
 import 'package:evently_app/utils/app_colors.dart';
@@ -36,17 +37,17 @@ class LoginView extends StatelessWidget {
                 ),
                 SizedBox(height: height * 0.06),
                 Text(
-                  'Login to your account',
+                  AppLocalizations.of(context)!.loginToYourAccount,
                   style: Theme.of(context).textTheme.headlineSmall,
                 ),
                 SizedBox(height: height * 0.024),
                 CustomTextField(
-                  title: 'Enter your email',
+                  title: AppLocalizations.of(context)!.enterYourEmail,
                   prefix: SvgPicture.asset(AppAssets.emailIcon),
                 ),
                 SizedBox(height: height * 0.016),
                 CustomTextField(
-                  title: 'Enter your password',
+                  title: AppLocalizations.of(context)!.enterYourPassword,
                   prefix: SvgPicture.asset(AppAssets.passwordIcon),
                   suffix: IconButton(
                     onPressed: () {},
@@ -66,13 +67,15 @@ class LoginView extends StatelessWidget {
                           AppRoutes.resetPasswordRouteName,
                         );
                       },
-                      title: 'Forget Password?',
+                      title: AppLocalizations.of(
+                        context,
+                      )!.forgotPasswordQuestion,
                     ),
                   ],
                 ),
                 SizedBox(height: height * 0.04),
                 CustomButton(
-                  title: 'Login',
+                  title: AppLocalizations.of(context)!.login,
                   onTap: () {
                     Navigator.pushNamed(context, AppRoutes.homeRouteName);
                   },
@@ -82,7 +85,7 @@ class LoginView extends StatelessWidget {
                   mainAxisAlignment: .center,
                   children: [
                     Text(
-                      'Don’t have an account?',
+                      AppLocalizations.of(context)!.dontHaveAccount,
                       style: Theme.of(context).textTheme.displayMedium,
                     ),
                     CustomTextButton(
@@ -92,7 +95,7 @@ class LoginView extends StatelessWidget {
                           AppRoutes.registerRouteName,
                         );
                       },
-                      title: 'Signup',
+                      title: AppLocalizations.of(context)!.signup,
                     ),
                   ],
                 ),
@@ -105,7 +108,10 @@ class LoginView extends StatelessWidget {
                         color: Theme.of(context).disabledColor,
                       ),
                     ),
-                    Text('Or', style: Theme.of(context).textTheme.labelMedium),
+                    Text(
+                      AppLocalizations.of(context)!.or,
+                      style: Theme.of(context).textTheme.labelMedium,
+                    ),
                     Expanded(
                       child: Divider(
                         indent: width * 0.04,
@@ -117,7 +123,7 @@ class LoginView extends StatelessWidget {
                 SizedBox(height: height * 0.024),
                 CustomButton(
                   hasIcon: true,
-                  title: 'Login with Google',
+                  title: AppLocalizations.of(context)!.loginWithGoogle,
                   onTap: () {},
                   child: Image.asset(AppAssets.googleImage),
                 ),

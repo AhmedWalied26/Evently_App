@@ -1,6 +1,7 @@
 import 'package:evently_app/features/home/taps/profile_tap/widgets/custom_bottom_sheet.dart';
 import 'package:evently_app/features/home/taps/profile_tap/widgets/setting_tile.dart';
 import 'package:evently_app/features/home/taps/profile_tap/widgets/switch_mode.dart';
+import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:evently_app/utils/app_assets.dart';
 import 'package:evently_app/utils/app_colors.dart';
 import 'package:evently_app/utils/size_utils.dart';
@@ -23,16 +24,19 @@ class ProfileTap extends StatelessWidget {
             backgroundImage: AssetImage(AppAssets.routeLogoImage),
           ),
           SizedBox(height: height * 0.02),
-          Text('John Safwat', style: Theme.of(context).textTheme.headlineLarge),
+          Text(
+            'Ahmed Walied',
+            style: Theme.of(context).textTheme.headlineLarge,
+          ),
           SizedBox(height: height * 0.01),
           Text(
-            'johnsafwat.route@gmail.com',
+            'ahmed.route@gmail.com',
             style: Theme.of(context).textTheme.displayMedium,
           ),
           SizedBox(height: height * 0.042),
           SettingTile(
             horiMargin: width * 0.04,
-            title: 'Dark mode',
+            title: AppLocalizations.of(context)!.darkMode,
             child: SwitchMode(),
           ),
           SizedBox(height: height * 0.016),
@@ -49,7 +53,7 @@ class ProfileTap extends StatelessWidget {
             overlayColor: WidgetStateProperty.all(AppColors.transparentColor),
             child: SettingTile(
               horiMargin: width * 0.04,
-              title: 'Language',
+              title: AppLocalizations.of(context)!.language,
               child: Icon(
                 Icons.arrow_forward_ios_outlined,
                 color: Theme.of(context).cardColor,
@@ -59,7 +63,7 @@ class ProfileTap extends StatelessWidget {
           SizedBox(height: height * 0.016),
           SettingTile(
             horiMargin: width * 0.04,
-            title: 'Logout',
+            title: AppLocalizations.of(context)!.logout,
             child: SvgPicture.asset(
               AppAssets.logoutIcon,
               width: 26,

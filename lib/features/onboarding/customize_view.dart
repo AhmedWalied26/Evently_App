@@ -45,12 +45,12 @@ class CustomizeView extends StatelessWidget {
               ),
               SizedBox(height: height * 0.04),
               Text(
-                'Personalize Your Experience',
+                AppLocalizations.of(context)!.personalizeExperienceTitle,
                 style: Theme.of(context).textTheme.headlineLarge,
               ),
               SizedBox(height: height * 0.02),
               Text(
-                'Choose your preferred theme and language to get started with a comfortable, tailored experience that suits your style.',
+                AppLocalizations.of(context)!.personalizeExperienceDescription,
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
               SizedBox(height: height * 0.03),
@@ -113,7 +113,7 @@ class CustomizeView extends StatelessWidget {
               ),
               Spacer(),
               CustomButton(
-                title: 'Let’s start',
+                title: AppLocalizations.of(context)!.letsStart,
                 onTap: () {
                   Navigator.pushNamed(
                     arguments: Image.asset(

@@ -1,3 +1,4 @@
+import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:evently_app/providers/app_theme_provider.dart';
 import 'package:evently_app/utils/app_assets.dart';
 import 'package:evently_app/utils/app_colors.dart';
@@ -35,22 +36,22 @@ class RegisterView extends StatelessWidget {
                 ),
                 SizedBox(height: height * 0.06),
                 Text(
-                  'Create your account',
+                  AppLocalizations.of(context)!.createYourAccount,
                   style: Theme.of(context).textTheme.headlineSmall,
                 ),
                 SizedBox(height: height * 0.024),
                 CustomTextField(
-                  title: 'Enter your name',
+                  title: AppLocalizations.of(context)!.enterYourName,
                   prefix: SvgPicture.asset(AppAssets.profileIcon),
                 ),
                 SizedBox(height: height * 0.016),
                 CustomTextField(
-                  title: 'Enter your email',
+                  title: AppLocalizations.of(context)!.enterYourEmail,
                   prefix: SvgPicture.asset(AppAssets.emailIcon),
                 ),
                 SizedBox(height: height * 0.016),
                 CustomTextField(
-                  title: 'Enter your password',
+                  title: AppLocalizations.of(context)!.enterYourPassword,
                   prefix: SvgPicture.asset(AppAssets.passwordIcon),
                   suffix: IconButton(
                     onPressed: () {},
@@ -62,7 +63,7 @@ class RegisterView extends StatelessWidget {
                 ),
                 SizedBox(height: height * 0.016),
                 CustomTextField(
-                  title: 'Confirm your password',
+                  title: AppLocalizations.of(context)!.confirmYourPassword,
                   prefix: SvgPicture.asset(AppAssets.passwordIcon),
                   suffix: IconButton(
                     onPressed: () {},
@@ -73,20 +74,23 @@ class RegisterView extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: height * 0.04),
-                CustomButton(title: 'Sign up', onTap: () {}),
+                CustomButton(
+                  title: AppLocalizations.of(context)!.signup,
+                  onTap: () {},
+                ),
                 SizedBox(height: height * 0.02),
                 Row(
                   mainAxisAlignment: .center,
                   children: [
                     Text(
-                      'Already have an account?',
+                      AppLocalizations.of(context)!.alreadyHaveAccount,
                       style: Theme.of(context).textTheme.displayMedium,
                     ),
                     CustomTextButton(
                       onTap: () {
                         Navigator.pop(context);
                       },
-                      title: 'Login',
+                      title: AppLocalizations.of(context)!.login,
                     ),
                   ],
                 ),
@@ -99,7 +103,10 @@ class RegisterView extends StatelessWidget {
                         color: Theme.of(context).disabledColor,
                       ),
                     ),
-                    Text('Or', style: Theme.of(context).textTheme.labelMedium),
+                    Text(
+                      AppLocalizations.of(context)!.or,
+                      style: Theme.of(context).textTheme.labelMedium,
+                    ),
                     Expanded(
                       child: Divider(
                         indent: width * 0.04,
@@ -111,7 +118,7 @@ class RegisterView extends StatelessWidget {
                 SizedBox(height: height * 0.024),
                 CustomButton(
                   hasIcon: true,
-                  title: 'Sign up with Google',
+                  title: AppLocalizations.of(context)!.signupWithGoogle,
                   onTap: () {},
                   child: Image.asset(AppAssets.googleImage),
                 ),

@@ -1,4 +1,5 @@
 import 'package:evently_app/features/onboarding/widgets/skip_button.dart';
+import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:evently_app/providers/app_theme_provider.dart';
 import 'package:evently_app/utils/app_assets.dart';
 import 'package:evently_app/utils/size_utils.dart';
@@ -18,7 +19,7 @@ class ResetPassword extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          'Forget Password',
+          AppLocalizations.of(context)!.forgotPassword,
           style: Theme.of(context).textTheme.titleSmall,
         ),
         leading: Row(
@@ -49,7 +50,10 @@ class ResetPassword extends StatelessWidget {
               width: .infinity,
               fit: .cover,
             ),
-            CustomButton(title: 'Reset password', onTap: () {}),
+            CustomButton(
+              title: AppLocalizations.of(context)!.resetPassword,
+              onTap: () {},
+            ),
           ],
         ),
       ),

@@ -33,17 +33,18 @@ class CustomBottomSheet extends StatelessWidget {
           ),
           SizedBox(height: height * 0.02),
           Text(
-            'Choose Language',
+            AppLocalizations.of(context)!.chooseLanguage,
             style: Theme.of(context).textTheme.displayLarge,
           ),
           Text(
-            'Select your prefered language',
+            AppLocalizations.of(context)!.selectPreferredLanguage,
             style: Theme.of(context).textTheme.bodyLarge,
           ),
           SizedBox(height: height * 0.03),
           InkWell(
             onTap: () {
               languageProvider.changeLanguage('en');
+              Navigator.pop(context);
             },
             overlayColor: WidgetStateProperty.all(AppColors.transparentColor),
             child: SettingTile(
@@ -65,6 +66,7 @@ class CustomBottomSheet extends StatelessWidget {
           InkWell(
             onTap: () {
               languageProvider.changeLanguage('ar');
+              Navigator.pop(context);
             },
             overlayColor: WidgetStateProperty.all(AppColors.transparentColor),
             child: SettingTile(
