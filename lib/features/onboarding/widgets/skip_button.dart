@@ -1,5 +1,4 @@
 import 'package:evently_app/l10n/app_localizations.dart';
-import 'package:evently_app/providers/app_language_provider.dart';
 import 'package:evently_app/providers/app_theme_provider.dart';
 import 'package:evently_app/utils/app_colors.dart';
 import 'package:evently_app/utils/size_utils.dart';
@@ -16,16 +15,11 @@ class SkipButton extends StatelessWidget {
     var height = context.height;
     var width = context.width;
     var themeProvider = Provider.of<AppThemeProvider>(context);
-    var languageProvider = Provider.of<AppLanguageProvider>(context);
     return InkWell(
       overlayColor: WidgetStateProperty.all(AppColors.transparentColor),
       onTap: onTap,
       child: Container(
-        alignment: hasIcon
-            ? languageProvider.appLanguage == 'ar'
-                  ? .centerLeft
-                  : .centerRight
-            : .center,
+        alignment: .center,
         height: height * 0.034,
         width: hasIcon ? width * 0.08 : width * 0.14,
         decoration: BoxDecoration(
@@ -35,7 +29,7 @@ class SkipButton extends StatelessWidget {
         ),
         child: hasIcon
             ? Icon(
-                Icons.arrow_back_ios,
+                Icons.arrow_back_ios_new,
                 size: 24,
                 color: themeProvider.isDark
                     ? AppColors.whiteColor
