@@ -1,3 +1,4 @@
+import 'package:evently_app/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextButton extends StatelessWidget {
@@ -9,6 +10,7 @@ class CustomTextButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: onTap,
+      style: TextButton.styleFrom(overlayColor: AppColors.transparentColor),
       child: Text(
         title,
         style: Theme.of(context).textTheme.labelLarge?.copyWith(

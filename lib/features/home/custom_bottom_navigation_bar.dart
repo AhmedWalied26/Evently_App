@@ -28,38 +28,44 @@ class CustomBottomNavigationBar extends StatelessWidget {
           topRight: .circular(24),
         ),
       ),
-      child: BottomNavigationBar(
-        onTap: onTap,
-        currentIndex: currentIndex,
-        items: [
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(AppAssets.homeIcon),
-            label: AppLocalizations.of(context)!.home,
-            activeIcon: SvgPicture.asset(
-              themeProvider.isDark
-                  ? AppAssets.homeFillDarkIcon
-                  : AppAssets.homeFillLightIcon,
+      child: Theme(
+        data: Theme.of(context).copyWith(
+          splashFactory: NoSplash.splashFactory,
+          highlightColor: Colors.transparent,
+        ),
+        child: BottomNavigationBar(
+          onTap: onTap,
+          currentIndex: currentIndex,
+          items: [
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset(AppAssets.homeIcon),
+              label: AppLocalizations.of(context)!.home,
+              activeIcon: SvgPicture.asset(
+                themeProvider.isDark
+                    ? AppAssets.homeFillDarkIcon
+                    : AppAssets.homeFillLightIcon,
+              ),
             ),
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(AppAssets.favoriteIcon),
-            label: AppLocalizations.of(context)!.favorite,
-            activeIcon: SvgPicture.asset(
-              themeProvider.isDark
-                  ? AppAssets.favoriteFillDarkIcon
-                  : AppAssets.favoriteFillLightIcon,
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset(AppAssets.favoriteIcon),
+              label: AppLocalizations.of(context)!.favorite,
+              activeIcon: SvgPicture.asset(
+                themeProvider.isDark
+                    ? AppAssets.favoriteFillDarkIcon
+                    : AppAssets.favoriteFillLightIcon,
+              ),
             ),
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(AppAssets.profileIcon),
-            label: AppLocalizations.of(context)!.profile,
-            activeIcon: SvgPicture.asset(
-              themeProvider.isDark
-                  ? AppAssets.profileFillDarkIcon
-                  : AppAssets.profileFillLightIcon,
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset(AppAssets.profileIcon),
+              label: AppLocalizations.of(context)!.profile,
+              activeIcon: SvgPicture.asset(
+                themeProvider.isDark
+                    ? AppAssets.profileFillDarkIcon
+                    : AppAssets.profileFillLightIcon,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

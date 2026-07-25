@@ -1,3 +1,4 @@
+import 'package:evently_app/utils/app_colors.dart';
 import 'package:evently_app/utils/app_styles.dart';
 import 'package:evently_app/utils/size_utils.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +22,7 @@ class CustomButton extends StatelessWidget {
     var width = context.width;
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
+        overlayColor: AppColors.transparentColor,
         padding: .all(height * 0.015),
         backgroundColor: hasIcon
             ? Theme.of(context).canvasColor

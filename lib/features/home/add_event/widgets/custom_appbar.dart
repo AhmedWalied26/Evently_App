@@ -14,6 +14,7 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
     var height = context.height;
     var width = context.width;
     return AppBar(
+      scrolledUnderElevation: 0,
       centerTitle: true,
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       title: Text(

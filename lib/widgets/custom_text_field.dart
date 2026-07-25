@@ -10,6 +10,7 @@ class CustomTextField extends StatelessWidget {
   final FormFieldValidator<String>? validation;
   final bool isObsecure;
   final int? maxLines;
+  final TextInputType? type;
   const CustomTextField({
     super.key,
     required this.title,
@@ -19,6 +20,7 @@ class CustomTextField extends StatelessWidget {
     this.validation,
     this.isObsecure = false,
     this.maxLines = 1,
+    this.type,
   });
 
   @override
@@ -26,6 +28,7 @@ class CustomTextField extends StatelessWidget {
     var height = context.height;
     var width = context.width;
     return TextFormField(
+      keyboardType: type,
       maxLines: maxLines,
       obscureText: isObsecure,
       validator: validation,

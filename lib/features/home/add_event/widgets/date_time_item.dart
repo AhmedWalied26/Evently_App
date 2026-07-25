@@ -1,4 +1,5 @@
 import 'package:evently_app/providers/app_theme_provider.dart';
+import 'package:evently_app/utils/app_colors.dart';
 import 'package:evently_app/utils/app_styles.dart';
 import 'package:evently_app/utils/size_utils.dart';
 import 'package:flutter/material.dart';
@@ -33,6 +34,7 @@ class DateTimeItem extends StatelessWidget {
         Spacer(),
         TextButton(
           onPressed: onTap,
+          style: TextButton.styleFrom(overlayColor: AppColors.transparentColor),
           child: Text(
             titleUnderline,
             style:

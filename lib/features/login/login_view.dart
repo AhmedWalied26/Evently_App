@@ -34,127 +34,130 @@ class _LoginViewState extends State<LoginView> {
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: width * 0.06),
-          child: Form(
-            key: formKey,
-            child: Column(
-              crossAxisAlignment: .stretch,
-              children: [
-                SizedBox(height: height * 0.04),
-                Image.asset(
-                  themeProvider.isDark
-                      ? AppAssets.eventlyLogoDarkImage
-                      : AppAssets.eventlyLogoLightImage,
-                  height: 27,
-                ),
-                SizedBox(height: height * 0.06),
-                Text(
-                  AppLocalizations.of(context)!.loginToYourAccount,
-                  style: Theme.of(context).textTheme.headlineSmall,
-                ),
-                SizedBox(height: height * 0.024),
-                CustomTextField(
-                  validation: (value) {
-                    return AppValidation.validateEmail(value);
-                  },
-                  controller: emailController,
-                  title: AppLocalizations.of(context)!.enterYourEmail,
-                  prefix: SvgPicture.asset(AppAssets.emailIcon),
-                ),
-                SizedBox(height: height * 0.016),
-                CustomTextField(
-                  isObsecure: isObsecured,
-                  controller: passwordController,
-                  validation: (value) {
-                    return AppValidation.validatePassword(value);
-                  },
-                  title: AppLocalizations.of(context)!.enterYourPassword,
-                  prefix: SvgPicture.asset(AppAssets.passwordIcon),
-                  suffix: IconButton(
-                    onPressed: () {
-                      isObsecured = !isObsecured;
-                      setState(() {});
+          child: SingleChildScrollView(
+            child: Form(
+              key: formKey,
+              child: Column(
+                crossAxisAlignment: .stretch,
+                children: [
+                  SizedBox(height: height * 0.04),
+                  Image.asset(
+                    themeProvider.isDark
+                        ? AppAssets.eventlyLogoDarkImage
+                        : AppAssets.eventlyLogoLightImage,
+                    height: 27,
+                  ),
+                  SizedBox(height: height * 0.06),
+                  Text(
+                    AppLocalizations.of(context)!.loginToYourAccount,
+                    style: Theme.of(context).textTheme.headlineSmall,
+                  ),
+                  SizedBox(height: height * 0.024),
+                  CustomTextField(
+                    type: .emailAddress,
+                    validation: (value) {
+                      return AppValidation.validateEmail(value);
                     },
-                    icon: Icon(
-                      isObsecured
-                          ? Icons.visibility_off_outlined
-                          : Icons.visibility_outlined,
-                      color: AppColors.lightGreyColor,
+                    controller: emailController,
+                    title: AppLocalizations.of(context)!.enterYourEmail,
+                    prefix: SvgPicture.asset(AppAssets.emailIcon),
+                  ),
+                  SizedBox(height: height * 0.016),
+                  CustomTextField(
+                    isObsecure: isObsecured,
+                    controller: passwordController,
+                    validation: (value) {
+                      return AppValidation.validatePassword(value);
+                    },
+                    title: AppLocalizations.of(context)!.enterYourPassword,
+                    prefix: SvgPicture.asset(AppAssets.passwordIcon),
+                    suffix: IconButton(
+                      onPressed: () {
+                        isObsecured = !isObsecured;
+                        setState(() {});
+                      },
+                      icon: Icon(
+                        isObsecured
+                            ? Icons.visibility_off_outlined
+                            : Icons.visibility_outlined,
+                        color: AppColors.lightGreyColor,
+                      ),
                     ),
                   ),
-                ),
-                Row(
-                  mainAxisAlignment: .end,
-                  children: [
-                    CustomTextButton(
-                      onTap: () {
-                        Navigator.pushNamed(
+                  Row(
+                    mainAxisAlignment: .end,
+                    children: [
+                      CustomTextButton(
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            AppRoutes.resetPasswordRouteName,
+                          );
+                        },
+                        title: AppLocalizations.of(
                           context,
-                          AppRoutes.resetPasswordRouteName,
-                        );
-                      },
-                      title: AppLocalizations.of(
-                        context,
-                      )!.forgotPasswordQuestion,
-                    ),
-                  ],
-                ),
-                SizedBox(height: height * 0.04),
-                CustomButton(
-                  title: AppLocalizations.of(context)!.login,
-                  onTap: () {
-                    if (formKey.currentState!.validate()) {
-                      Navigator.pushNamed(context, AppRoutes.homeRouteName);
-                    }
-                  },
-                ),
-                SizedBox(height: height * 0.04),
-                Row(
-                  mainAxisAlignment: .center,
-                  children: [
-                    Text(
-                      AppLocalizations.of(context)!.dontHaveAccount,
-                      style: Theme.of(context).textTheme.displayMedium,
-                    ),
-                    CustomTextButton(
-                      onTap: () {
-                        Navigator.pushNamed(
-                          context,
-                          AppRoutes.registerRouteName,
-                        );
-                      },
-                      title: AppLocalizations.of(context)!.signup,
-                    ),
-                  ],
-                ),
-                SizedBox(height: height * 0.032),
-                Row(
-                  children: [
-                    Expanded(
-                      child: Divider(
-                        endIndent: width * 0.04,
-                        color: Theme.of(context).disabledColor,
+                        )!.forgotPasswordQuestion,
                       ),
-                    ),
-                    Text(
-                      AppLocalizations.of(context)!.or,
-                      style: Theme.of(context).textTheme.labelMedium,
-                    ),
-                    Expanded(
-                      child: Divider(
-                        indent: width * 0.04,
-                        color: Theme.of(context).disabledColor,
+                    ],
+                  ),
+                  SizedBox(height: height * 0.04),
+                  CustomButton(
+                    title: AppLocalizations.of(context)!.login,
+                    onTap: () {
+                      if (formKey.currentState!.validate()) {
+                        Navigator.pushNamed(context, AppRoutes.homeRouteName);
+                      }
+                    },
+                  ),
+                  SizedBox(height: height * 0.04),
+                  Row(
+                    mainAxisAlignment: .center,
+                    children: [
+                      Text(
+                        AppLocalizations.of(context)!.dontHaveAccount,
+                        style: Theme.of(context).textTheme.displayMedium,
                       ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: height * 0.024),
-                CustomButton(
-                  hasIcon: true,
-                  title: AppLocalizations.of(context)!.loginWithGoogle,
-                  onTap: () {},
-                  child: Image.asset(AppAssets.googleImage),
-                ),
-              ],
+                      CustomTextButton(
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            AppRoutes.registerRouteName,
+                          );
+                        },
+                        title: AppLocalizations.of(context)!.signup,
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: height * 0.032),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Divider(
+                          endIndent: width * 0.04,
+                          color: Theme.of(context).disabledColor,
+                        ),
+                      ),
+                      Text(
+                        AppLocalizations.of(context)!.or,
+                        style: Theme.of(context).textTheme.labelMedium,
+                      ),
+                      Expanded(
+                        child: Divider(
+                          indent: width * 0.04,
+                          color: Theme.of(context).disabledColor,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: height * 0.024),
+                  CustomButton(
+                    hasIcon: true,
+                    title: AppLocalizations.of(context)!.loginWithGoogle,
+                    onTap: () {},
+                    child: Image.asset(AppAssets.googleImage),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

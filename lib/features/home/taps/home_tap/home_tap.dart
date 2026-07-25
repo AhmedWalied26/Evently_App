@@ -68,6 +68,9 @@ class _HomeTapState extends State<HomeTap> {
                   ),
                   Spacer(),
                   IconButton(
+                    style: IconButton.styleFrom(
+                      overlayColor: AppColors.transparentColor,
+                    ),
                     onPressed: () {
                       themeProvider.changeThemeButton();
                     },
@@ -104,6 +107,9 @@ class _HomeTapState extends State<HomeTap> {
                 ],
               ),
               TabBar(
+                overlayColor: WidgetStateProperty.all(
+                  AppColors.transparentColor,
+                ),
                 onTap: (index) {
                   selectedTap = index;
                   setState(() {});

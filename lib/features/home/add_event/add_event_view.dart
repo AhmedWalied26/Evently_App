@@ -10,6 +10,7 @@ import 'package:evently_app/utils/size_utils.dart';
 import 'package:evently_app/widgets/custom_button.dart';
 import 'package:evently_app/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class AddEventView extends StatefulWidget {
@@ -43,6 +44,10 @@ class _AddEventViewState extends State<AddEventView> {
   ];
 
   int selectedTab = 0;
+  DateTime? selectedDate;
+  TimeOfDay? selectedTime;
+  String formatDate = '';
+  String formatTime = '';
 
   var formKey = GlobalKey<FormState>();
   TextEditingController controllerTitle = TextEditingController();
@@ -139,14 +144,18 @@ class _AddEventViewState extends State<AddEventView> {
                 SizedBox(height: height * 0.02),
                 DateTimeItem(
                   title: AppLocalizations.of(context)!.eventDate,
-                  titleUnderline: AppLocalizations.of(context)!.chooseDate,
+                  titleUnderline: selectedDate == null
+                      ? AppLocalizations.of(context)!.chooseDate
+                      : formatDate,
                   imageIcon: AppAssets.eventDateLightIcon,
-                  onTap: () {},
+                  onTap: onChangeDate,
                 ),
                 DateTimeItem(
-                  onTap: () {},
+                  onTap: onChangeTime,
                   title: AppLocalizations.of(context)!.eventTime,
-                  titleUnderline: AppLocalizations.of(context)!.chooseTime,
+                  titleUnderline: selectedTime == null
+                      ? AppLocalizations.of(context)!.chooseTime
+                      : formatTime,
                   imageIcon: AppAssets.eventTimeLightIcon,
                 ),
               ],
@@ -167,5 +176,31 @@ class _AddEventViewState extends State<AddEventView> {
         ),
       ),
     );
+  }
+
+  void onChangeDate() async {
+    var chooseDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime.now(),
+      lastDate: DateTime.now().add(Duration(days: 365)),
+    );
+    if (chooseDate != null) {
+      selectedDate = chooseDate;
+      formatDate = DateFormat('dd/MM/yyyy').format(selectedDate!);
+      setState(() {});
+    }
+  }
+
+  void onChangeTime() async {
+    var chooseTime = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.now(),
+    );
+    if (chooseTime != null) {
+      selectedTime = chooseTime;
+      formatTime = chooseTime.format(context);
+      setState(() {});
+    }
   }
 }
