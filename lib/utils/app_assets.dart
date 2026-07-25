@@ -76,4 +76,6 @@ class AppAssets {
 
   static const String googleImage = 'assets/images/google_image.png';
   static const String routeLogoImage = 'assets/images/route_logo_image.png';
+
+  static const String searchIcon = 'assets/svg/search_icon.svg';
 }

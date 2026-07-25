@@ -3,6 +3,7 @@ import 'package:evently_app/features/home/taps/favorites_tap/favorites_tap.dart'
 import 'package:evently_app/features/home/taps/home_tap/home_tap.dart';
 import 'package:evently_app/features/home/taps/profile_tap/profile_tap.dart';
 import 'package:evently_app/utils/app_colors.dart';
+import 'package:evently_app/utils/app_routes.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatefulWidget {
@@ -29,7 +30,9 @@ class _HomeViewState extends State<HomeView> {
       ),
       body: taps[currentIndex],
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, AppRoutes.addEventRouteName);
+        },
         child: Icon(Icons.add, color: AppColors.whiteColor, size: 34),
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:evently_app/features/home/add_event/add_event_view.dart';
 import 'package:evently_app/features/home/home_view.dart';
 import 'package:evently_app/features/login/login_view.dart';
 import 'package:evently_app/features/login/reset_password.dart';
@@ -41,6 +42,7 @@ class EventlyApp extends StatelessWidget {
         AppRoutes.loginRouteName: (context) => LoginView(),
         AppRoutes.resetPasswordRouteName: (context) => ResetPassword(),
         AppRoutes.registerRouteName: (context) => RegisterView(),
+        AppRoutes.addEventRouteName: (context) => AddEventView(),
       },
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
