@@ -4,6 +4,7 @@ import 'package:evently_app/features/home/taps/profile_tap/widgets/switch_mode.d
 import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:evently_app/utils/app_assets.dart';
 import 'package:evently_app/utils/app_colors.dart';
+import 'package:evently_app/utils/app_routes.dart';
 import 'package:evently_app/utils/size_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -61,13 +62,22 @@ class ProfileTap extends StatelessWidget {
             ),
           ),
           SizedBox(height: height * 0.016),
-          SettingTile(
-            horiMargin: width * 0.04,
-            title: AppLocalizations.of(context)!.logout,
-            child: SvgPicture.asset(
-              AppAssets.logoutIcon,
-              width: 26,
-              height: 26,
+          InkWell(
+            onTap: () {
+              Navigator.pushNamedAndRemoveUntil(
+                context,
+                AppRoutes.loginRouteName,
+                (route) => false,
+              );
+            },
+            child: SettingTile(
+              horiMargin: width * 0.04,
+              title: AppLocalizations.of(context)!.logout,
+              child: SvgPicture.asset(
+                AppAssets.logoutIcon,
+                width: 26,
+                height: 26,
+              ),
             ),
           ),
         ],

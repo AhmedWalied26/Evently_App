@@ -72,6 +72,9 @@ class _LoginViewState extends State<LoginView> {
                     title: AppLocalizations.of(context)!.enterYourPassword,
                     prefix: SvgPicture.asset(AppAssets.passwordIcon),
                     suffix: IconButton(
+                      style: IconButton.styleFrom(
+                        overlayColor: AppColors.transparentColor,
+                      ),
                       onPressed: () {
                         isObsecured = !isObsecured;
                         setState(() {});

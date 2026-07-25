@@ -83,6 +83,9 @@ class _RegisterViewState extends State<RegisterView> {
                     title: AppLocalizations.of(context)!.enterYourPassword,
                     prefix: SvgPicture.asset(AppAssets.passwordIcon),
                     suffix: IconButton(
+                      style: IconButton.styleFrom(
+                        overlayColor: AppColors.transparentColor,
+                      ),
                       onPressed: () {
                         isObsecuredPassword = !isObsecuredPassword;
                         setState(() {});
@@ -108,6 +111,9 @@ class _RegisterViewState extends State<RegisterView> {
                     title: AppLocalizations.of(context)!.confirmYourPassword,
                     prefix: SvgPicture.asset(AppAssets.passwordIcon),
                     suffix: IconButton(
+                      style: IconButton.styleFrom(
+                        overlayColor: AppColors.transparentColor,
+                      ),
                       onPressed: () {
                         isObsecuredRePassword = !isObsecuredRePassword;
                         setState(() {});
