@@ -28,6 +28,7 @@ class CustomTextField extends StatelessWidget {
     var height = context.height;
     var width = context.width;
     return TextFormField(
+      cursorColor: Theme.of(context).cardColor,
       keyboardType: type,
       maxLines: maxLines,
       obscureText: isObsecure,
