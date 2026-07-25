@@ -5,15 +5,19 @@ import 'package:evently_app/features/login/reset_password.dart';
 import 'package:evently_app/features/onboarding/customize_view.dart';
 import 'package:evently_app/features/onboarding/onboarding_view.dart';
 import 'package:evently_app/features/register/register_view.dart';
+import 'package:evently_app/firebase_options.dart';
 import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:evently_app/providers/app_language_provider.dart';
 import 'package:evently_app/providers/app_theme_provider.dart';
 import 'package:evently_app/utils/app_routes.dart';
 import 'package:evently_app/utils/app_theme.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(
     MultiProvider(
       providers: [
