@@ -11,6 +11,15 @@ class AppThemeProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void changeThemeButton() {
+    if (appTheme == .light) {
+      appTheme = .dark;
+    } else {
+      appTheme = .light;
+    }
+    notifyListeners();
+  }
+
   bool isDarkMode() {
     return appTheme == ThemeMode.dark;
   }

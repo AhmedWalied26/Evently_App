@@ -134,4 +134,74 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get personalizeExperienceDescription =>
       'اختر اللغة والمظهر المفضلين لديك لتبدأ باستخدام التطبيق بتجربة مريحة ومناسبة لذوقك.';
+
+  @override
+  String get all => 'الكل';
+
+  @override
+  String get welcomeBack => 'مرحبًا بعودتك ✨';
+
+  @override
+  String get searchForEvent => 'ابحث عن فعالية';
+
+  @override
+  String get eventDetails => 'تفاصيل الفعالية';
+
+  @override
+  String get addEvent => 'إضافة فعالية';
+
+  @override
+  String get title => 'العنوان';
+
+  @override
+  String get eventTitle => 'عنوان الفعالية';
+
+  @override
+  String get description => 'الوصف';
+
+  @override
+  String get eventDescription => 'وصف الفعالية....';
+
+  @override
+  String get eventDate => 'تاريخ الفعالية';
+
+  @override
+  String get chooseDate => 'اختر التاريخ';
+
+  @override
+  String get eventTime => 'وقت الفعالية';
+
+  @override
+  String get chooseTime => 'اختر الوقت';
+
+  @override
+  String get sport => 'رياضة';
+
+  @override
+  String get birthday => 'عيد ميلاد';
+
+  @override
+  String get bookClub => 'نادي الكتاب';
+
+  @override
+  String get meeting => 'اجتماع';
+
+  @override
+  String get exhibition => 'معرض';
+
+  @override
+  String get birthdayParty => 'هذه حفلة عيد ميلاد';
+
+  @override
+  String get meetingForUpdatingDevelopmentMethod =>
+      'اجتماع لتحديث أسلوب التطوير';
+
+  @override
+  String get discoverUniqueExhibitionsAndTalents => 'اكتشف معارض ومواهب مميزة';
+
+  @override
+  String get weAreGoingToPlayFootball => 'سنذهب للعب كرة القدم';
+
+  @override
+  String get jun => '21 يناير';
 }

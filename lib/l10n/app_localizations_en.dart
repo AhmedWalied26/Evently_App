@@ -134,4 +134,75 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get personalizeExperienceDescription =>
       'Choose your preferred theme and language to get started with a comfortable, tailored experience that suits your style.';
+
+  @override
+  String get all => 'All';
+
+  @override
+  String get welcomeBack => 'Welcome Back ✨';
+
+  @override
+  String get searchForEvent => 'Search for event';
+
+  @override
+  String get eventDetails => 'Event details';
+
+  @override
+  String get addEvent => 'Add event';
+
+  @override
+  String get title => 'Title';
+
+  @override
+  String get eventTitle => 'Event Title';
+
+  @override
+  String get description => 'Description';
+
+  @override
+  String get eventDescription => 'Event Description....';
+
+  @override
+  String get eventDate => 'Event Date';
+
+  @override
+  String get chooseDate => 'Choose date';
+
+  @override
+  String get eventTime => 'Event Time';
+
+  @override
+  String get chooseTime => 'Choose time';
+
+  @override
+  String get sport => 'Sport';
+
+  @override
+  String get birthday => 'Birthday';
+
+  @override
+  String get bookClub => 'Book Club';
+
+  @override
+  String get meeting => 'Meeting';
+
+  @override
+  String get exhibition => 'Exhibition';
+
+  @override
+  String get birthdayParty => 'This is a Birthday Party';
+
+  @override
+  String get meetingForUpdatingDevelopmentMethod =>
+      'Meeting for Updating The Development Method';
+
+  @override
+  String get discoverUniqueExhibitionsAndTalents =>
+      'Discover unique exhibitions and talents';
+
+  @override
+  String get weAreGoingToPlayFootball => 'We’re going to play football';
+
+  @override
+  String get jun => '21 Jun';
 }
