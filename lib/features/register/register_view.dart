@@ -2,6 +2,7 @@ import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:evently_app/providers/app_theme_provider.dart';
 import 'package:evently_app/utils/app_assets.dart';
 import 'package:evently_app/utils/app_colors.dart';
+import 'package:evently_app/utils/app_validation.dart';
 import 'package:evently_app/utils/size_utils.dart';
 import 'package:evently_app/widgets/custom_button.dart';
 import 'package:evently_app/widgets/custom_text_button.dart';
@@ -10,9 +11,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
-class RegisterView extends StatelessWidget {
+class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
 
+  @override
+  State<RegisterView> createState() => _RegisterViewState();
+}
+
+class _RegisterViewState extends State<RegisterView> {
+  final formKey = GlobalKey<FormState>();
+  final TextEditingController userNameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController rePasswordController = TextEditingController();
+  bool isObsecuredPassword = true;
+  bool isObsecuredRePassword = true;
   @override
   Widget build(BuildContext context) {
     var height = context.height;
@@ -24,6 +37,7 @@ class RegisterView extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: width * 0.06),
           child: Form(
+            key: formKey,
             child: Column(
               crossAxisAlignment: .stretch,
               children: [
@@ -41,34 +55,65 @@ class RegisterView extends StatelessWidget {
                 ),
                 SizedBox(height: height * 0.024),
                 CustomTextField(
+                  controller: userNameController,
+                  validation: (value) {
+                    return AppValidation.validateUserName(value);
+                  },
                   title: AppLocalizations.of(context)!.enterYourName,
                   prefix: SvgPicture.asset(AppAssets.profileIcon),
                 ),
                 SizedBox(height: height * 0.016),
                 CustomTextField(
+                  controller: emailController,
+                  validation: (value) {
+                    return AppValidation.validateEmail(value);
+                  },
                   title: AppLocalizations.of(context)!.enterYourEmail,
                   prefix: SvgPicture.asset(AppAssets.emailIcon),
                 ),
                 SizedBox(height: height * 0.016),
                 CustomTextField(
+                  isObsecure: isObsecuredPassword,
+                  controller: passwordController,
+                  validation: (value) {
+                    return AppValidation.validatePassword(value);
+                  },
                   title: AppLocalizations.of(context)!.enterYourPassword,
                   prefix: SvgPicture.asset(AppAssets.passwordIcon),
                   suffix: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      isObsecuredPassword = !isObsecuredPassword;
+                      setState(() {});
+                    },
                     icon: Icon(
-                      Icons.visibility_off_outlined,
+                      isObsecuredPassword
+                          ? Icons.visibility_off_outlined
+                          : Icons.visibility_outlined,
                       color: AppColors.lightGreyColor,
                     ),
                   ),
                 ),
                 SizedBox(height: height * 0.016),
                 CustomTextField(
+                  isObsecure: isObsecuredRePassword,
+                  controller: rePasswordController,
+                  validation: (value) {
+                    return AppValidation.validateConfirmPassword(
+                      value,
+                      passwordController.text,
+                    );
+                  },
                   title: AppLocalizations.of(context)!.confirmYourPassword,
                   prefix: SvgPicture.asset(AppAssets.passwordIcon),
                   suffix: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      isObsecuredRePassword = !isObsecuredRePassword;
+                      setState(() {});
+                    },
                     icon: Icon(
-                      Icons.visibility_off_outlined,
+                      isObsecuredRePassword
+                          ? Icons.visibility_off_outlined
+                          : Icons.visibility_outlined,
                       color: AppColors.lightGreyColor,
                     ),
                   ),
@@ -76,7 +121,9 @@ class RegisterView extends StatelessWidget {
                 SizedBox(height: height * 0.04),
                 CustomButton(
                   title: AppLocalizations.of(context)!.signup,
-                  onTap: () {},
+                  onTap: () {
+                    if (formKey.currentState!.validate()) {}
+                  },
                 ),
                 SizedBox(height: height * 0.02),
                 Row(

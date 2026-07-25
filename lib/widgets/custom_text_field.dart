@@ -6,11 +6,17 @@ class CustomTextField extends StatelessWidget {
   final String title;
   final Widget? prefix;
   final Widget? suffix;
+  final TextEditingController? controller;
+  final FormFieldValidator<String>? validation;
+  final bool isObsecure;
   const CustomTextField({
     super.key,
     required this.title,
     this.prefix,
     this.suffix,
+    this.controller,
+    this.validation,
+    this.isObsecure = false,
   });
 
   @override
@@ -18,6 +24,9 @@ class CustomTextField extends StatelessWidget {
     var height = context.height;
     var width = context.width;
     return TextFormField(
+      obscureText: isObsecure,
+      validator: validation,
+      controller: controller,
       decoration: InputDecoration(
         contentPadding: EdgeInsets.symmetric(
           horizontal: width * 0.06,

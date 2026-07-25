@@ -3,6 +3,7 @@ import 'package:evently_app/providers/app_theme_provider.dart';
 import 'package:evently_app/utils/app_assets.dart';
 import 'package:evently_app/utils/app_colors.dart';
 import 'package:evently_app/utils/app_routes.dart';
+import 'package:evently_app/utils/app_validation.dart';
 import 'package:evently_app/utils/size_utils.dart';
 import 'package:evently_app/widgets/custom_button.dart';
 import 'package:evently_app/widgets/custom_text_button.dart';
@@ -11,9 +12,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
-class LoginView extends StatelessWidget {
+class LoginView extends StatefulWidget {
   const LoginView({super.key});
 
+  @override
+  State<LoginView> createState() => _LoginViewState();
+}
+
+class _LoginViewState extends State<LoginView> {
+  final formKey = GlobalKey<FormState>();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  bool isObsecured = true;
   @override
   Widget build(BuildContext context) {
     var height = context.height;
@@ -25,6 +35,7 @@ class LoginView extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: width * 0.06),
           child: Form(
+            key: formKey,
             child: Column(
               crossAxisAlignment: .stretch,
               children: [
@@ -42,17 +53,31 @@ class LoginView extends StatelessWidget {
                 ),
                 SizedBox(height: height * 0.024),
                 CustomTextField(
+                  validation: (value) {
+                    return AppValidation.validateEmail(value);
+                  },
+                  controller: emailController,
                   title: AppLocalizations.of(context)!.enterYourEmail,
                   prefix: SvgPicture.asset(AppAssets.emailIcon),
                 ),
                 SizedBox(height: height * 0.016),
                 CustomTextField(
+                  isObsecure: isObsecured,
+                  controller: passwordController,
+                  validation: (value) {
+                    return AppValidation.validatePassword(value);
+                  },
                   title: AppLocalizations.of(context)!.enterYourPassword,
                   prefix: SvgPicture.asset(AppAssets.passwordIcon),
                   suffix: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      isObsecured = !isObsecured;
+                      setState(() {});
+                    },
                     icon: Icon(
-                      Icons.visibility_off_outlined,
+                      isObsecured
+                          ? Icons.visibility_off_outlined
+                          : Icons.visibility_outlined,
                       color: AppColors.lightGreyColor,
                     ),
                   ),
@@ -77,7 +102,9 @@ class LoginView extends StatelessWidget {
                 CustomButton(
                   title: AppLocalizations.of(context)!.login,
                   onTap: () {
-                    Navigator.pushNamed(context, AppRoutes.homeRouteName);
+                    if (formKey.currentState!.validate()) {
+                      Navigator.pushNamed(context, AppRoutes.homeRouteName);
+                    }
                   },
                 ),
                 SizedBox(height: height * 0.04),
