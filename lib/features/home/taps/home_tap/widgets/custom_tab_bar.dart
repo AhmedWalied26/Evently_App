@@ -6,11 +6,13 @@ import 'package:flutter/material.dart';
 class CustomTabBar extends StatelessWidget {
   final bool isSelected;
   final String eventName;
+  final IconData? icon;
 
   const CustomTabBar({
     super.key,
     this.isSelected = false,
     required this.eventName,
+    this.icon,
   });
 
   @override
@@ -36,7 +38,7 @@ class CustomTabBar extends StatelessWidget {
             spacing: width * 0.018,
             children: [
               Icon(
-                Icons.grid_view_sharp,
+                icon,
                 color: isSelected
                     ? AppColors.whiteColor
                     : Theme.of(context).cardColor,

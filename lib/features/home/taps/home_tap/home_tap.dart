@@ -18,6 +18,14 @@ class HomeTap extends StatefulWidget {
 
 class _HomeTapState extends State<HomeTap> {
   int selectedTap = 0;
+  List<IconData> iconsTabs = [
+    Icons.grid_view_sharp,
+    Icons.directions_bike,
+    Icons.cake_outlined,
+    Icons.diversity_3,
+    Icons.menu_book_sharp,
+    Icons.museum,
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -72,6 +80,9 @@ class _HomeTapState extends State<HomeTap> {
                     ),
                   ),
                   InkWell(
+                    overlayColor: WidgetStateProperty.all(
+                      AppColors.transparentColor,
+                    ),
                     onTap: () {
                       languageProvider.changeLanguageButton();
                     },
@@ -102,12 +113,13 @@ class _HomeTapState extends State<HomeTap> {
                 dividerColor: AppColors.transparentColor,
                 labelPadding: .zero,
                 tabAlignment: .start,
-                tabs: eventNameList.map((eventName) {
+                tabs: List.generate(eventNameList.length, (index) {
                   return CustomTabBar(
-                    isSelected: selectedTap == eventNameList.indexOf(eventName),
-                    eventName: eventName,
+                    icon: iconsTabs[index],
+                    isSelected: selectedTap == index,
+                    eventName: eventNameList[index],
                   );
-                }).toList(),
+                }),
               ),
               Expanded(
                 child: ListView.separated(
