@@ -66,4 +66,36 @@ class AppValidation {
 
     return null;
   }
+
+  static String? validateEventTitle(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return 'Event title is required';
+    }
+
+    if (value.trim().length < 3) {
+      return 'Event title must be at least 3 characters';
+    }
+
+    if (value.trim().length > 50) {
+      return 'Event title must be less than 50 characters';
+    }
+
+    return null;
+  }
+
+  static String? validateEventDescription(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return 'Event description is required';
+    }
+
+    if (value.trim().length < 10) {
+      return 'Description must be at least 10 characters';
+    }
+
+    if (value.trim().length > 500) {
+      return 'Description must be less than 500 characters';
+    }
+
+    return null;
+  }
 }

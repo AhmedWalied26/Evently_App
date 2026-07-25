@@ -1,11 +1,11 @@
 import 'package:evently_app/features/home/add_event/widgets/custom_appbar.dart';
 import 'package:evently_app/features/home/add_event/widgets/date_time_item.dart';
 import 'package:evently_app/features/home/taps/home_tap/widgets/custom_tab_bar.dart';
-import 'package:evently_app/features/onboarding/widgets/skip_button.dart';
 import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:evently_app/providers/app_theme_provider.dart';
 import 'package:evently_app/utils/app_assets.dart';
 import 'package:evently_app/utils/app_colors.dart';
+import 'package:evently_app/utils/app_validation.dart';
 import 'package:evently_app/utils/size_utils.dart';
 import 'package:evently_app/widgets/custom_button.dart';
 import 'package:evently_app/widgets/custom_text_field.dart';
@@ -44,6 +44,10 @@ class _AddEventViewState extends State<AddEventView> {
 
   int selectedTab = 0;
 
+  var formKey = GlobalKey<FormState>();
+  TextEditingController controllerTitle = TextEditingController();
+  TextEditingController controllerDescription = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     var height = context.height;
@@ -61,79 +65,92 @@ class _AddEventViewState extends State<AddEventView> {
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: width * 0.035),
         child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: .stretch,
-            children: [
-              SizedBox(height: height * 0.01),
-              Container(
-                width: .infinity,
-                decoration: BoxDecoration(
-                  borderRadius: .circular(16),
-                  border: Border.all(color: Theme.of(context).dividerColor),
-                ),
-                child: ClipRRect(
-                  borderRadius: .circular(16),
-                  child: Image.asset(
-                    height: height * 0.22,
-                    themeProvider.isDark
-                        ? darkImagesList[selectedTab]
-                        : lightImagesList[selectedTab],
-                    fit: .fill,
+          child: Form(
+            key: formKey,
+            child: Column(
+              crossAxisAlignment: .stretch,
+              children: [
+                SizedBox(height: height * 0.01),
+                Container(
+                  width: .infinity,
+                  decoration: BoxDecoration(
+                    borderRadius: .circular(16),
+                    border: Border.all(color: Theme.of(context).dividerColor),
                   ),
-                ),
-              ),
-              SizedBox(
-                height: height * 0.1,
-                child: ListView.separated(
-                  scrollDirection: .horizontal,
-                  itemCount: eventNameList.length,
-                  separatorBuilder: (context, index) => SizedBox(),
-                  itemBuilder: (context, index) => InkWell(
-                    overlayColor: WidgetStateProperty.all(
-                      AppColors.transparentColor,
-                    ),
-                    onTap: () {
-                      selectedTab = index;
-                      setState(() {});
-                    },
-                    child: CustomTabBar(
-                      icon: iconsTabs[index],
-                      isSelected: selectedTab == index,
-                      eventName: eventNameList[index],
+                  child: ClipRRect(
+                    borderRadius: .circular(16),
+                    child: Image.asset(
+                      height: height * 0.22,
+                      themeProvider.isDark
+                          ? darkImagesList[selectedTab]
+                          : lightImagesList[selectedTab],
+                      fit: .fill,
                     ),
                   ),
                 ),
-              ),
-              Text(
-                AppLocalizations.of(context)!.title,
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
-              SizedBox(height: height * 0.01),
-              CustomTextField(title: AppLocalizations.of(context)!.eventTitle),
-              SizedBox(height: height * 0.02),
-              Text(
-                AppLocalizations.of(context)!.description,
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
-              SizedBox(height: height * 0.01),
-              CustomTextField(
-                maxLines: 6,
-                title: AppLocalizations.of(context)!.eventDescription,
-              ),
-              SizedBox(height: height * 0.02),
-              DateTimeItem(
-                title: AppLocalizations.of(context)!.eventDate,
-                titleUnderline: AppLocalizations.of(context)!.chooseDate,
-                imageIcon: AppAssets.eventDateLightIcon,
-                onTap: () {},
-              ),
-              DateTimeItem(
-                onTap: () {},
-                title: AppLocalizations.of(context)!.eventTime,
-                titleUnderline: AppLocalizations.of(context)!.chooseTime,
-                imageIcon: AppAssets.eventTimeLightIcon,
-              ),
-            ],
+                SizedBox(
+                  height: height * 0.1,
+                  child: ListView.separated(
+                    scrollDirection: .horizontal,
+                    itemCount: eventNameList.length,
+                    separatorBuilder: (context, index) => SizedBox(),
+                    itemBuilder: (context, index) => InkWell(
+                      overlayColor: WidgetStateProperty.all(
+                        AppColors.transparentColor,
+                      ),
+                      onTap: () {
+                        selectedTab = index;
+                        setState(() {});
+                      },
+                      child: CustomTabBar(
+                        icon: iconsTabs[index],
+                        isSelected: selectedTab == index,
+                        eventName: eventNameList[index],
+                      ),
+                    ),
+                  ),
+                ),
+                Text(
+                  AppLocalizations.of(context)!.title,
+                  style: Theme.of(context).textTheme.headlineMedium,
+                ),
+                SizedBox(height: height * 0.01),
+                CustomTextField(
+                  controller: controllerTitle,
+                  validation: (value) {
+                    return AppValidation.validateEventTitle(value);
+                  },
+                  title: AppLocalizations.of(context)!.eventTitle,
+                ),
+                SizedBox(height: height * 0.02),
+                Text(
+                  AppLocalizations.of(context)!.description,
+                  style: Theme.of(context).textTheme.headlineMedium,
+                ),
+                SizedBox(height: height * 0.01),
+                CustomTextField(
+                  controller: controllerDescription,
+                  validation: (value) {
+                    return AppValidation.validateEventDescription(value);
+                  },
+                  maxLines: 6,
+                  title: AppLocalizations.of(context)!.eventDescription,
+                ),
+                SizedBox(height: height * 0.02),
+                DateTimeItem(
+                  title: AppLocalizations.of(context)!.eventDate,
+                  titleUnderline: AppLocalizations.of(context)!.chooseDate,
+                  imageIcon: AppAssets.eventDateLightIcon,
+                  onTap: () {},
+                ),
+                DateTimeItem(
+                  onTap: () {},
+                  title: AppLocalizations.of(context)!.eventTime,
+                  titleUnderline: AppLocalizations.of(context)!.chooseTime,
+                  imageIcon: AppAssets.eventTimeLightIcon,
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -144,7 +161,9 @@ class _AddEventViewState extends State<AddEventView> {
         ),
         child: CustomButton(
           title: AppLocalizations.of(context)!.addEvent,
-          onTap: () {},
+          onTap: () {
+            if (formKey.currentState!.validate()) {}
+          },
         ),
       ),
     );
