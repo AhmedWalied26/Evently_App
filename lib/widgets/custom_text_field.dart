@@ -36,7 +36,7 @@ class CustomTextField extends StatelessWidget {
       controller: controller,
       decoration: InputDecoration(
         contentPadding: EdgeInsets.symmetric(
-          horizontal: width * 0.06,
+          horizontal: 0,
           vertical: height * 0.015,
         ),
         filled: true,
@@ -50,9 +50,9 @@ class CustomTextField extends StatelessWidget {
           ),
           child: prefix,
         ),
-        prefixIconConstraints: BoxConstraints(minHeight: 26, minWidth: 26),
+        prefixIconConstraints: BoxConstraints(minWidth: 0),
         suffixIcon: suffix,
-        suffixIconConstraints: BoxConstraints(minHeight: 26, minWidth: 26),
+        suffixIconConstraints: BoxConstraints(minWidth: 0),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Theme.of(context).disabledColor),
           borderRadius: .circular(16),

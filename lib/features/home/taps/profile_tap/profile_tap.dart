@@ -63,6 +63,7 @@ class ProfileTap extends StatelessWidget {
           ),
           SizedBox(height: height * 0.016),
           InkWell(
+            overlayColor: WidgetStateProperty.all(AppColors.transparentColor),
             onTap: () {
               Navigator.pushNamedAndRemoveUntil(
                 context,
