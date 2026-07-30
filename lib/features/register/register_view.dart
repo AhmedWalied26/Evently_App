@@ -26,6 +26,16 @@ class _RegisterViewState extends State<RegisterView> {
   final TextEditingController rePasswordController = TextEditingController();
   bool isObsecuredPassword = true;
   bool isObsecuredRePassword = true;
+
+  @override
+  void dispose() {
+    userNameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    rePasswordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     var height = context.height;
