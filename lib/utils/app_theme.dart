@@ -4,6 +4,102 @@ import 'package:flutter/material.dart';
 
 class AppTheme {
   static final ThemeData lightTheme = ThemeData(
+    timePickerTheme: TimePickerThemeData(
+      backgroundColor: AppColors.whiteColor,
+      hourMinuteColor: AppColors.mainLightColor,
+      hourMinuteTextColor: AppColors.whiteColor,
+      dayPeriodColor: WidgetStateColor.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) {
+          return AppColors.mainLightColor;
+        }
+        return Colors.white;
+      }),
+      dayPeriodTextColor: WidgetStateColor.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) {
+          return Colors.white;
+        }
+        return AppColors.mainLightColor;
+      }),
+      dialBackgroundColor: AppColors.mainLightColor.withValues(alpha: .12),
+      dialHandColor: AppColors.mainLightColor,
+      dialTextColor: WidgetStateColor.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) {
+          return AppColors.whiteColor;
+        }
+        return AppColors.mainLightColor;
+      }),
+      entryModeIconColor: AppColors.mainLightColor,
+      cancelButtonStyle: TextButton.styleFrom(foregroundColor: Colors.red),
+      confirmButtonStyle: TextButton.styleFrom(
+        foregroundColor: AppColors.mainLightColor,
+      ),
+      helpTextStyle: const TextStyle(
+        color: AppColors.mainLightColor,
+        fontSize: 16,
+        fontWeight: FontWeight.w600,
+      ),
+      hourMinuteTextStyle: const TextStyle(
+        color: AppColors.whiteColor,
+        fontSize: 40,
+        fontWeight: FontWeight.bold,
+      ),
+      dayPeriodTextStyle: const TextStyle(
+        color: AppColors.whiteColor,
+        fontSize: 14,
+        fontWeight: FontWeight.w600,
+      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+    ),
+    datePickerTheme: DatePickerThemeData(
+      backgroundColor: AppColors.whiteColor,
+      headerBackgroundColor: AppColors.mainLightColor,
+      headerForegroundColor: AppColors.whiteColor,
+      weekdayStyle: const TextStyle(
+        color: Colors.grey,
+        fontWeight: FontWeight.w600,
+      ),
+      dayStyle: const TextStyle(color: AppColors.mainDarkColor),
+      dayBackgroundColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) {
+          return AppColors.mainLightColor;
+        }
+        return Colors.transparent;
+      }),
+
+      dayForegroundColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) {
+          return AppColors.whiteColor;
+        }
+        return AppColors.mainLightColor;
+      }),
+      todayBackgroundColor: WidgetStateProperty.all(AppColors.mainDarkColor),
+      todayForegroundColor: WidgetStateProperty.all(AppColors.whiteColor),
+      todayBorder: const BorderSide(color: AppColors.mainLightColor),
+      yearForegroundColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) {
+          return AppColors.whiteColor;
+        }
+        return AppColors.mainDarkColor;
+      }),
+      yearBackgroundColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) {
+          return AppColors.mainLightColor;
+        }
+        return Colors.transparent;
+      }),
+      rangePickerBackgroundColor: AppColors.whiteColor,
+      rangeSelectionBackgroundColor: AppColors.mainLightColor.withValues(
+        alpha: .15,
+      ),
+      rangeSelectionOverlayColor: const WidgetStatePropertyAll(
+        Colors.transparent,
+      ),
+      cancelButtonStyle: TextButton.styleFrom(foregroundColor: Colors.red),
+      confirmButtonStyle: TextButton.styleFrom(
+        foregroundColor: AppColors.mainLightColor,
+      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+    ),
     scaffoldBackgroundColor: AppColors.lightBgColor,
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: AppColors.whiteColor,
@@ -39,6 +135,79 @@ class AppTheme {
     ),
   );
   static final ThemeData darkTheme = ThemeData(
+    timePickerTheme: TimePickerThemeData(
+      dialTextColor: WidgetStateColor.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) {
+          return AppColors.whiteColor;
+        }
+        return AppColors.mainDarkColor;
+      }),
+      backgroundColor: AppColors.darkBgColor,
+      hourMinuteColor: AppColors.mainLightColor,
+      hourMinuteTextColor: AppColors.whiteColor,
+      dayPeriodColor: AppColors.mainLightColor,
+      dayPeriodTextColor: AppColors.whiteColor,
+      dialBackgroundColor: AppColors.mainLightColor.withValues(alpha: .15),
+      dialHandColor: AppColors.mainLightColor,
+      entryModeIconColor: AppColors.whiteColor,
+      cancelButtonStyle: TextButton.styleFrom(foregroundColor: Colors.red),
+      confirmButtonStyle: TextButton.styleFrom(
+        foregroundColor: AppColors.mainLightColor,
+      ),
+      helpTextStyle: const TextStyle(
+        color: AppColors.whiteColor,
+        fontSize: 16,
+        fontWeight: FontWeight.w600,
+      ),
+      hourMinuteTextStyle: const TextStyle(
+        color: AppColors.whiteColor,
+        fontSize: 40,
+        fontWeight: FontWeight.bold,
+      ),
+      dayPeriodTextStyle: const TextStyle(
+        color: AppColors.whiteColor,
+        fontSize: 14,
+        fontWeight: FontWeight.w600,
+      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+    ),
+    datePickerTheme: DatePickerThemeData(
+      subHeaderForegroundColor: AppColors.whiteColor,
+      backgroundColor: AppColors.darkBgColor,
+      weekdayStyle: const TextStyle(
+        color: Colors.grey,
+        fontWeight: FontWeight.w600,
+      ),
+      dayBackgroundColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) {
+          return AppColors.mainLightColor;
+        }
+        return Colors.transparent;
+      }),
+      dayForegroundColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) {
+          return AppColors.whiteColor;
+        }
+        return AppColors.mainDarkColor;
+      }),
+      rangeSelectionOverlayColor: WidgetStatePropertyAll(
+        AppColors.transparentColor,
+      ),
+      rangePickerBackgroundColor: AppColors.whiteColor,
+      todayBackgroundColor: WidgetStateProperty.all(AppColors.mainLightColor),
+      todayForegroundColor: WidgetStateProperty.all(AppColors.whiteColor),
+      todayBorder: const BorderSide(color: AppColors.whiteColor),
+      headerBackgroundColor: AppColors.mainLightColor,
+      headerForegroundColor: AppColors.whiteColor,
+      rangeSelectionBackgroundColor: AppColors.whiteColor,
+      yearForegroundColor: WidgetStateProperty.all(AppColors.mainDarkColor),
+      cancelButtonStyle: ButtonStyle(
+        foregroundColor: WidgetStateProperty.all(Colors.red),
+      ),
+      confirmButtonStyle: ButtonStyle(
+        foregroundColor: WidgetStateProperty.all(AppColors.mainDarkColor),
+      ),
+    ),
     scaffoldBackgroundColor: AppColors.darkBgColor,
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: AppColors.darkBgColor,
