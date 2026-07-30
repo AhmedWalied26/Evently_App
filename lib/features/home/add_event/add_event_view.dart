@@ -83,13 +83,24 @@ class _AddEventViewState extends State<AddEventView> {
                     border: Border.all(color: Theme.of(context).dividerColor),
                   ),
                   child: ClipRRect(
-                    borderRadius: .circular(16),
-                    child: Image.asset(
-                      height: height * 0.22,
-                      themeProvider.isDark
-                          ? darkImagesList[selectedTab]
-                          : lightImagesList[selectedTab],
-                      fit: .fill,
+                    borderRadius: BorderRadius.circular(16),
+                    child: AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 300),
+                      switchInCurve: Curves.easeInOut,
+                      switchOutCurve: Curves.easeInOut,
+                      child: Image.asset(
+                        themeProvider.isDark
+                            ? darkImagesList[selectedTab]
+                            : lightImagesList[selectedTab],
+                        key: ValueKey(
+                          themeProvider.isDark
+                              ? darkImagesList[selectedTab]
+                              : lightImagesList[selectedTab],
+                        ),
+                        height: height * 0.22,
+                        width: double.infinity,
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
                 ),
