@@ -54,6 +54,13 @@ class _AddEventViewState extends State<AddEventView> {
   TextEditingController controllerDescription = TextEditingController();
 
   @override
+  void dispose() {
+    controllerTitle.dispose();
+    controllerDescription.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     var height = context.height;
     var width = context.width;
@@ -190,6 +197,7 @@ class _AddEventViewState extends State<AddEventView> {
   }
 
   void onChangeDate() async {
+    FocusManager.instance.primaryFocus?.unfocus();
     var chooseDate = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
@@ -204,6 +212,7 @@ class _AddEventViewState extends State<AddEventView> {
   }
 
   void onChangeTime() async {
+    FocusManager.instance.primaryFocus?.unfocus();
     var chooseTime = await showTimePicker(
       context: context,
       initialTime: TimeOfDay.now(),

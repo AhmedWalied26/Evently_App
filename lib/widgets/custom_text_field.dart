@@ -28,6 +28,9 @@ class CustomTextField extends StatelessWidget {
     var height = context.height;
     var width = context.width;
     return TextFormField(
+      onTapOutside: (event) {
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       cursorColor: Theme.of(context).cardColor,
       keyboardType: type,
       maxLines: maxLines,
