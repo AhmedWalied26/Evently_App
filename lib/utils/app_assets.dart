@@ -78,4 +78,6 @@ class AppAssets {
   static const String routeLogoImage = 'assets/images/route_logo_image.png';
 
   static const String searchIcon = 'assets/svg/search_icon.svg';
+  static const String editIcon = 'assets/svg/edit_icon.svg';
+  static const String trashIcon = 'assets/svg/trash_icon.svg';
 }

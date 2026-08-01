@@ -213,4 +213,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get no_search => 'لا توجد نتائج مطابقة للبحث';
+
+  @override
+  String get update_event => 'تعديل الفعالية';
 }

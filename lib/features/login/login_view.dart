@@ -257,30 +257,36 @@ class _LoginViewState extends State<LoginView> {
       isLoadingGoogle = true;
     });
 
-    final userCredential = await FirebaseUtils.signInWithGoogle();
+    try {
+      final userCredential = await FirebaseUtils.signInWithGoogle();
 
-    if (!context.mounted) {
-      return;
-    }
-    if (userCredential != null) {
-      final user = await FirebaseUtils.readUserFromFireStore(
-        userCredential.user!.uid,
-      );
-      if (user != null) {
-        var userProvider = Provider.of<UserProvider>(context, listen: false);
-        userProvider.upadateUser(user);
+      if (!context.mounted) {
+        return;
       }
+      if (userCredential != null) {
+        final user = await FirebaseUtils.readUserFromFireStore(
+          userCredential.user!.uid,
+        );
+        if (user != null) {
+          var userProvider = Provider.of<UserProvider>(context, listen: false);
+          userProvider.upadateUser(user);
+        }
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnakbarUtils.snackBar(title: 'Login Successfully', context: context),
-      );
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnakbarUtils.snackBar(title: 'Login Successfully', context: context),
+        );
+        setState(() {
+          isLoadingGoogle = false;
+        });
+        await Future.delayed(Duration(seconds: 1));
+        ScaffoldMessenger.of(context).hideCurrentSnackBar();
+        if (!context.mounted) return;
+        Navigator.pushNamed(context, AppRoutes.homeRouteName);
+      }
+    } finally {
       setState(() {
         isLoadingGoogle = false;
       });
-      await Future.delayed(Duration(seconds: 1));
-      ScaffoldMessenger.of(context).hideCurrentSnackBar();
-      if (!context.mounted) return;
-      Navigator.pushNamed(context, AppRoutes.homeRouteName);
     }
   }
 }

@@ -66,5 +66,6 @@
 "jun" : "21 Jun",
 "no_events":"No events added yet",
 "no_fav":"No favorite events yet",
-"no_search":"No matching events found"
+"no_search":"No matching events found",
+"update_event": "Update Event"
 }

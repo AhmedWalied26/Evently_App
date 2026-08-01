@@ -6,4 +6,6 @@ class AppRoutes {
   static const String resetPasswordRouteName = 'reset_password_view';
   static const String registerRouteName = 'register_view';
   static const String addEventRouteName = 'add_event_view';
+  static const String eventDetailsRouteName = 'event_details_view';
+  static const String updateEventRouteName = 'update_event_view';
 }

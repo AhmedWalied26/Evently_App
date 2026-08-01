@@ -499,6 +499,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No matching events found'**
   String get no_search;
+
+  /// No description provided for @update_event.
+  ///
+  /// In en, this message translates to:
+  /// **'Update Event'**
+  String get update_event;
 }
 
 class _AppLocalizationsDelegate
