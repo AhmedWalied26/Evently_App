@@ -1,11 +1,14 @@
 import 'package:evently_app/features/home/taps/home_tap/widgets/custom_tab_bar.dart';
 import 'package:evently_app/features/home/taps/home_tap/widgets/event_card.dart';
 import 'package:evently_app/l10n/app_localizations.dart';
+import 'package:evently_app/model/event_model.dart';
 import 'package:evently_app/providers/app_language_provider.dart';
 import 'package:evently_app/providers/app_theme_provider.dart';
+import 'package:evently_app/providers/event_provider.dart';
 import 'package:evently_app/providers/user_provider.dart';
 import 'package:evently_app/utils/app_colors.dart';
 import 'package:evently_app/utils/app_styles.dart';
+import 'package:evently_app/utils/firebase_utils.dart';
 import 'package:evently_app/utils/size_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -35,6 +38,8 @@ class _HomeTapState extends State<HomeTap> {
     var languageProvider = Provider.of<AppLanguageProvider>(context);
     var themeProvider = Provider.of<AppThemeProvider>(context);
     var userProvider = Provider.of<UserProvider>(context, listen: false);
+    var eventProvider = Provider.of<EventProvider>(context);
+    eventProvider.getAllEvents();
     List<String> eventNameList = [
       AppLocalizations.of(context)!.all,
       AppLocalizations.of(context)!.sport,
@@ -131,12 +136,25 @@ class _HomeTapState extends State<HomeTap> {
                 }),
               ),
               Expanded(
-                child: ListView.separated(
-                  itemCount: 10,
-                  separatorBuilder: (_, index) =>
-                      SizedBox(height: height * 0.016),
-                  itemBuilder: (_, index) => EventCard(),
-                ),
+                child: eventProvider.eventList.isEmpty
+                    ? eventProvider.isLoading
+                          ? Center(
+                              child: CircularProgressIndicator(
+                                color: Theme.of(context).cardColor,
+                              ),
+                            )
+                          : Center(
+                              child: Text(
+                                AppLocalizations.of(context)!.no_events,
+                              ),
+                            )
+                    : ListView.separated(
+                        itemCount: eventProvider.eventList.length,
+                        separatorBuilder: (_, index) =>
+                            SizedBox(height: height * 0.016),
+                        itemBuilder: (_, index) =>
+                            EventCard(event: eventProvider.eventList[index]),
+                      ),
               ),
             ],
           ),

@@ -481,6 +481,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'21 Jun'**
   String get jun;
+
+  /// No description provided for @no_events.
+  ///
+  /// In en, this message translates to:
+  /// **'No Events Added yet '**
+  String get no_events;
 }
 
 class _AppLocalizationsDelegate

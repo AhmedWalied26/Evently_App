@@ -2,10 +2,13 @@ import 'package:evently_app/features/home/add_event/widgets/custom_appbar.dart';
 import 'package:evently_app/features/home/add_event/widgets/date_time_item.dart';
 import 'package:evently_app/features/home/taps/home_tap/widgets/custom_tab_bar.dart';
 import 'package:evently_app/l10n/app_localizations.dart';
+import 'package:evently_app/model/event_model.dart';
 import 'package:evently_app/providers/app_theme_provider.dart';
+import 'package:evently_app/providers/event_provider.dart';
 import 'package:evently_app/utils/app_assets.dart';
 import 'package:evently_app/utils/app_colors.dart';
 import 'package:evently_app/utils/app_validation.dart';
+import 'package:evently_app/utils/firebase_utils.dart';
 import 'package:evently_app/utils/size_utils.dart';
 import 'package:evently_app/widgets/custom_button.dart';
 import 'package:evently_app/widgets/custom_text_field.dart';
@@ -46,6 +49,8 @@ class _AddEventViewState extends State<AddEventView> {
   int selectedTab = 0;
   DateTime? selectedDate;
   TimeOfDay? selectedTime;
+  String selectedEventName = '';
+  String selectedEventImage = '';
   String formatDate = '';
   String formatTime = '';
 
@@ -72,6 +77,10 @@ class _AddEventViewState extends State<AddEventView> {
       AppLocalizations.of(context)!.bookClub,
       AppLocalizations.of(context)!.exhibition,
     ];
+    selectedEventName = eventNameList[selectedTab];
+    selectedEventImage = themeProvider.isDark
+        ? darkImagesList[selectedTab]
+        : lightImagesList[selectedTab];
     return Scaffold(
       appBar: CustomAppbar(),
       body: Padding(
@@ -187,13 +196,43 @@ class _AddEventViewState extends State<AddEventView> {
           vertical: height * 0.03,
         ),
         child: CustomButton(
+          isLoading: isLoading,
           title: AppLocalizations.of(context)!.addEvent,
-          onTap: () {
-            if (formKey.currentState!.validate()) {}
-          },
+          onTap: addEvent,
         ),
       ),
     );
+  }
+
+  bool isLoading = false;
+
+  void addEvent() {
+    var eventProvider = Provider.of<EventProvider>(context, listen: false);
+    if (formKey.currentState!.validate()) {
+      EventModel event = EventModel(
+        eventLightImage: lightImagesList[selectedTab],
+        eventDarkImage: darkImagesList[selectedTab],
+        eventName: selectedEventName,
+        eventTitle: controllerTitle.text,
+        eventDescription: controllerDescription.text,
+        eventDate: DateTime(
+          selectedDate!.year,
+          selectedDate!.month,
+          selectedDate!.day,
+          selectedTime!.hour,
+          selectedTime!.minute,
+        ),
+      );
+      setState(() {
+        isLoading = true;
+      });
+      FirebaseUtils.addEventInFireStore(event)
+          .then((value) {
+            eventProvider.getAllEvents();
+            Navigator.pop(context);
+          })
+          .catchError((error) {});
+    }
   }
 
   void onChangeDate() async {

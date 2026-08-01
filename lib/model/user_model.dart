@@ -1,8 +1,8 @@
 class UserModel {
   static const String collectionName = 'Users';
-  String uId;
-  String name;
-  String email;
+  final String uId;
+  final String name;
+  final String email;
 
   UserModel({required this.uId, required this.email, required this.name});
 

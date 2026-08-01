@@ -29,14 +29,14 @@ class FavoritesTap extends StatelessWidget {
                 child: SvgPicture.asset(AppAssets.searchIcon),
               ),
             ),
-            Expanded(
-              child: ListView.separated(
-                itemCount: 10,
-                itemBuilder: (_, index) => EventCard(),
-                separatorBuilder: (_, index) =>
-                    SizedBox(height: height * 0.016),
-              ),
-            ),
+            // Expanded(
+            //   child: ListView.separated(
+            //     itemCount: 10,
+            //     itemBuilder: (_, index) => EventCard(),
+            //     separatorBuilder: (_, index) =>
+            //         SizedBox(height: height * 0.016),
+            //   ),
+            // ),
           ],
         ),
       ),

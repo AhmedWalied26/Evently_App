@@ -1,13 +1,15 @@
-import 'package:evently_app/l10n/app_localizations.dart';
+import 'package:evently_app/model/event_model.dart';
 import 'package:evently_app/providers/app_theme_provider.dart';
 import 'package:evently_app/utils/app_assets.dart';
 import 'package:evently_app/utils/size_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class EventCard extends StatelessWidget {
-  const EventCard({super.key});
+  const EventCard({super.key, required this.event});
+  final EventModel event;
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +24,7 @@ class EventCard extends StatelessWidget {
         image: DecorationImage(
           fit: .fill,
           image: AssetImage(
-            themeProvider.isDark
-                ? AppAssets.birthdayDarkImage
-                : AppAssets.birthdayLightImage,
+            themeProvider.isDark ? event.eventDarkImage : event.eventLightImage,
           ),
         ),
       ),
@@ -41,7 +41,9 @@ class EventCard extends StatelessWidget {
                 borderRadius: .circular(8),
                 border: .all(color: Theme.of(context).dividerColor),
               ),
-              child: Text(AppLocalizations.of(context)!.jun),
+              child: Text(
+                DateFormat('dd MMM').format(event.eventDate).toString(),
+              ),
             ),
             Container(
               padding: .all(width * 0.018),
@@ -53,7 +55,7 @@ class EventCard extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: .spaceBetween,
                 children: [
-                  Text(AppLocalizations.of(context)!.birthdayParty),
+                  Text(event.eventTitle),
                   SvgPicture.asset(
                     AppAssets.favoriteIcon,
                     colorFilter: ColorFilter.mode(

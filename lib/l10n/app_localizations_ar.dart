@@ -204,4 +204,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get jun => '21 يناير';
+
+  @override
+  String get no_events => 'لم تتم إضافة أي أحداث حتى الآن';
 }
