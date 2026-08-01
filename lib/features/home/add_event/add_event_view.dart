@@ -1,3 +1,4 @@
+// ignore_for_file: use_build_context_synchronously
 import 'package:evently_app/features/home/add_event/widgets/custom_appbar.dart';
 import 'package:evently_app/features/home/add_event/widgets/date_time_item.dart';
 import 'package:evently_app/features/home/taps/home_tap/widgets/custom_tab_bar.dart';
@@ -215,6 +216,7 @@ class _AddEventViewState extends State<AddEventView> {
         eventName: selectedEventName,
         eventTitle: controllerTitle.text,
         eventDescription: controllerDescription.text,
+        eventCategoryIndex: selectedTab + 1,
         eventDate: DateTime(
           selectedDate!.year,
           selectedDate!.month,
@@ -229,6 +231,7 @@ class _AddEventViewState extends State<AddEventView> {
       FirebaseUtils.addEventInFireStore(event)
           .then((value) {
             eventProvider.getAllEvents();
+
             Navigator.pop(context);
           })
           .catchError((error) {});

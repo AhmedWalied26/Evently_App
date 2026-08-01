@@ -7,6 +7,7 @@ class EventModel {
   final String eventLightImage;
   final String eventDarkImage;
   final String eventName;
+  final int eventCategoryIndex;
   final String eventTitle;
   final String eventDescription;
   final DateTime eventDate;
@@ -19,6 +20,7 @@ class EventModel {
     required this.eventName,
     required this.eventTitle,
     required this.eventDescription,
+    required this.eventCategoryIndex,
     required this.eventDate,
     this.isFavourite = false,
   });
@@ -32,6 +34,7 @@ class EventModel {
         eventTitle: data['event_title'],
         eventDescription: data['event_description'],
         eventDate: (data['event_date'] as Timestamp).toDate(),
+        eventCategoryIndex: data['event_category_index'],
         isFavourite: data['is_favourite'],
       );
 
@@ -44,6 +47,7 @@ class EventModel {
       'event_title': eventTitle,
       'event_description': eventDescription,
       'event_date': eventDate,
+      'event_category_index': eventCategoryIndex,
       'is_favourite': isFavourite,
     };
   }

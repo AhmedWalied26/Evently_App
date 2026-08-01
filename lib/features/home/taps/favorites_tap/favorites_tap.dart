@@ -1,4 +1,3 @@
-import 'package:evently_app/features/home/taps/home_tap/widgets/event_card.dart';
 import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:evently_app/utils/app_assets.dart';
 import 'package:evently_app/utils/size_utils.dart';

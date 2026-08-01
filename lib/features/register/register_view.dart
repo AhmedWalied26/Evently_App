@@ -308,12 +308,12 @@ class _RegisterViewState extends State<RegisterView> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnakbarUtils.snackBar(title: 'Login Successfully', context: context),
       );
-      await Future.delayed(Duration(seconds: 1));
-      ScaffoldMessenger.of(context).hideCurrentSnackBar();
-      if (!context.mounted) return;
       setState(() {
         isLoadingGoogle = false;
       });
+      await Future.delayed(Duration(seconds: 1));
+      ScaffoldMessenger.of(context).hideCurrentSnackBar();
+      if (!context.mounted) return;
       Navigator.pushNamed(context, AppRoutes.homeRouteName);
     }
   }

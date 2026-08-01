@@ -1,14 +1,12 @@
 import 'package:evently_app/features/home/taps/home_tap/widgets/custom_tab_bar.dart';
 import 'package:evently_app/features/home/taps/home_tap/widgets/event_card.dart';
 import 'package:evently_app/l10n/app_localizations.dart';
-import 'package:evently_app/model/event_model.dart';
 import 'package:evently_app/providers/app_language_provider.dart';
 import 'package:evently_app/providers/app_theme_provider.dart';
 import 'package:evently_app/providers/event_provider.dart';
 import 'package:evently_app/providers/user_provider.dart';
 import 'package:evently_app/utils/app_colors.dart';
 import 'package:evently_app/utils/app_styles.dart';
-import 'package:evently_app/utils/firebase_utils.dart';
 import 'package:evently_app/utils/size_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -30,6 +28,18 @@ class _HomeTapState extends State<HomeTap> {
     Icons.menu_book_sharp,
     Icons.museum,
   ];
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<EventProvider>().getAllEvents();
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,9 +47,9 @@ class _HomeTapState extends State<HomeTap> {
     var width = context.width;
     var languageProvider = Provider.of<AppLanguageProvider>(context);
     var themeProvider = Provider.of<AppThemeProvider>(context);
-    var userProvider = Provider.of<UserProvider>(context, listen: false);
+    var userProvider = Provider.of<UserProvider>(context);
     var eventProvider = Provider.of<EventProvider>(context);
-    eventProvider.getAllEvents();
+
     List<String> eventNameList = [
       AppLocalizations.of(context)!.all,
       AppLocalizations.of(context)!.sport,
@@ -121,6 +131,11 @@ class _HomeTapState extends State<HomeTap> {
                 onTap: (index) {
                   selectedTap = index;
                   setState(() {});
+                  if (index == 0) {
+                    eventProvider.getAllEvents();
+                  } else {
+                    eventProvider.getFilterEvents(index);
+                  }
                 },
                 isScrollable: true,
                 indicatorColor: AppColors.transparentColor,
@@ -136,18 +151,16 @@ class _HomeTapState extends State<HomeTap> {
                 }),
               ),
               Expanded(
-                child: eventProvider.eventList.isEmpty
-                    ? eventProvider.isLoading
-                          ? Center(
-                              child: CircularProgressIndicator(
-                                color: Theme.of(context).cardColor,
-                              ),
-                            )
-                          : Center(
-                              child: Text(
-                                AppLocalizations.of(context)!.no_events,
-                              ),
-                            )
+                child: eventProvider.isLoading
+                    ? Center(
+                        child: CircularProgressIndicator(
+                          color: Theme.of(context).cardColor,
+                        ),
+                      )
+                    : eventProvider.eventList.isEmpty
+                    ? Center(
+                        child: Text(AppLocalizations.of(context)!.no_events),
+                      )
                     : ListView.separated(
                         itemCount: eventProvider.eventList.length,
                         separatorBuilder: (_, index) =>

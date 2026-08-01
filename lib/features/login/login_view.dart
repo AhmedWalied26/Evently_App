@@ -16,8 +16,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
-import 'package:top_snackbar_flutter/custom_snack_bar.dart';
-import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -200,12 +198,6 @@ class _LoginViewState extends State<LoginView> {
   bool isLoading = false;
 
   void login() async {
-    showTopSnackBar(
-      Overlay.of(context),
-      CustomSnackBar.success(
-        message: "Good job, your release is successful. Have a nice day",
-      ),
-    );
     if (formKey.currentState!.validate()) {
       try {
         setState(() {
@@ -229,7 +221,7 @@ class _LoginViewState extends State<LoginView> {
         );
         await Future.delayed(Duration(seconds: 1));
         ScaffoldMessenger.of(context).hideCurrentSnackBar();
-        // Navigator.pushNamed(context, AppRoutes.homeRouteName);
+        Navigator.pushNamed(context, AppRoutes.homeRouteName);
       } on FirebaseAuthException catch (e) {
         if (e.code == 'invalid-credential') {
           ScaffoldMessenger.of(context).showSnackBar(
@@ -282,12 +274,12 @@ class _LoginViewState extends State<LoginView> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnakbarUtils.snackBar(title: 'Login Successfully', context: context),
       );
-      await Future.delayed(Duration(seconds: 1));
-      ScaffoldMessenger.of(context).hideCurrentSnackBar();
-      if (!context.mounted) return;
       setState(() {
         isLoadingGoogle = false;
       });
+      await Future.delayed(Duration(seconds: 1));
+      ScaffoldMessenger.of(context).hideCurrentSnackBar();
+      if (!context.mounted) return;
       Navigator.pushNamed(context, AppRoutes.homeRouteName);
     }
   }
