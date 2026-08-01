@@ -16,6 +16,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -46,145 +48,164 @@ class _LoginViewState extends State<LoginView> {
     var height = context.height;
     var width = context.width;
     var themeProvider = Provider.of<AppThemeProvider>(context);
-    return Scaffold(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: width * 0.06),
-          child: SingleChildScrollView(
-            child: Form(
-              key: formKey,
-              child: Column(
-                crossAxisAlignment: .stretch,
-                children: [
-                  SizedBox(height: height * 0.04),
-                  Image.asset(
-                    themeProvider.isDark
-                        ? AppAssets.eventlyLogoDarkImage
-                        : AppAssets.eventlyLogoLightImage,
-                    height: 27,
-                  ),
-                  SizedBox(height: height * 0.06),
-                  Text(
-                    AppLocalizations.of(context)!.loginToYourAccount,
-                    style: Theme.of(context).textTheme.headlineSmall,
-                  ),
-                  SizedBox(height: height * 0.024),
-                  CustomTextField(
-                    type: .emailAddress,
-                    validation: (value) {
-                      return AppValidation.validateEmail(value);
-                    },
-                    controller: emailController,
-                    title: AppLocalizations.of(context)!.enterYourEmail,
-                    prefix: SvgPicture.asset(AppAssets.emailIcon),
-                  ),
-                  SizedBox(height: height * 0.016),
-                  CustomTextField(
-                    isObsecure: isObsecured,
-                    controller: passwordController,
-                    validation: (value) {
-                      return AppValidation.validatePassword(value);
-                    },
-                    title: AppLocalizations.of(context)!.enterYourPassword,
-                    prefix: SvgPicture.asset(AppAssets.passwordIcon),
-                    suffix: IconButton(
-                      style: IconButton.styleFrom(
-                        overlayColor: AppColors.transparentColor,
-                      ),
-                      onPressed: () {
-                        isObsecured = !isObsecured;
-                        setState(() {});
-                      },
-                      icon: Icon(
-                        isObsecured
-                            ? Icons.visibility_off_outlined
-                            : Icons.visibility_outlined,
-                        color: AppColors.lightGreyColor,
-                      ),
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: .end,
+    return Stack(
+      children: [
+        Scaffold(
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+          body: SafeArea(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: width * 0.06),
+              child: SingleChildScrollView(
+                child: Form(
+                  key: formKey,
+                  child: Column(
+                    crossAxisAlignment: .stretch,
                     children: [
-                      CustomTextButton(
-                        onTap: () {
-                          Navigator.pushNamed(
-                            context,
-                            AppRoutes.resetPasswordRouteName,
-                          );
-                        },
-                        title: AppLocalizations.of(
-                          context,
-                        )!.forgotPasswordQuestion,
+                      SizedBox(height: height * 0.04),
+                      Image.asset(
+                        themeProvider.isDark
+                            ? AppAssets.eventlyLogoDarkImage
+                            : AppAssets.eventlyLogoLightImage,
+                        height: 27,
                       ),
-                    ],
-                  ),
-                  SizedBox(height: height * 0.04),
-                  CustomButton(
-                    isLoading: isLoading,
-                    title: AppLocalizations.of(context)!.login,
-                    onTap: login,
-                  ),
-                  SizedBox(height: height * 0.04),
-                  Row(
-                    mainAxisAlignment: .center,
-                    children: [
+                      SizedBox(height: height * 0.06),
                       Text(
-                        AppLocalizations.of(context)!.dontHaveAccount,
-                        style: Theme.of(context).textTheme.displayMedium,
+                        AppLocalizations.of(context)!.loginToYourAccount,
+                        style: Theme.of(context).textTheme.headlineSmall,
                       ),
-                      CustomTextButton(
-                        onTap: () {
-                          Navigator.pushNamed(
-                            context,
-                            AppRoutes.registerRouteName,
-                          );
+                      SizedBox(height: height * 0.024),
+                      CustomTextField(
+                        type: .emailAddress,
+                        validation: (value) {
+                          return AppValidation.validateEmail(value);
                         },
-                        title: AppLocalizations.of(context)!.signup,
+                        controller: emailController,
+                        title: AppLocalizations.of(context)!.enterYourEmail,
+                        prefix: SvgPicture.asset(AppAssets.emailIcon),
                       ),
-                    ],
-                  ),
-                  SizedBox(height: height * 0.032),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Divider(
-                          endIndent: width * 0.04,
-                          color: Theme.of(context).disabledColor,
+                      SizedBox(height: height * 0.016),
+                      CustomTextField(
+                        isObsecure: isObsecured,
+                        controller: passwordController,
+                        validation: (value) {
+                          return AppValidation.validatePassword(value);
+                        },
+                        title: AppLocalizations.of(context)!.enterYourPassword,
+                        prefix: SvgPicture.asset(AppAssets.passwordIcon),
+                        suffix: IconButton(
+                          style: IconButton.styleFrom(
+                            overlayColor: AppColors.transparentColor,
+                          ),
+                          onPressed: () {
+                            isObsecured = !isObsecured;
+                            setState(() {});
+                          },
+                          icon: Icon(
+                            isObsecured
+                                ? Icons.visibility_off_outlined
+                                : Icons.visibility_outlined,
+                            color: AppColors.lightGreyColor,
+                          ),
                         ),
                       ),
-                      Text(
-                        AppLocalizations.of(context)!.or,
-                        style: Theme.of(context).textTheme.labelMedium,
+                      Row(
+                        mainAxisAlignment: .end,
+                        children: [
+                          CustomTextButton(
+                            onTap: () {
+                              Navigator.pushNamed(
+                                context,
+                                AppRoutes.resetPasswordRouteName,
+                              );
+                            },
+                            title: AppLocalizations.of(
+                              context,
+                            )!.forgotPasswordQuestion,
+                          ),
+                        ],
                       ),
-                      Expanded(
-                        child: Divider(
-                          indent: width * 0.04,
-                          color: Theme.of(context).disabledColor,
-                        ),
+                      SizedBox(height: height * 0.04),
+                      CustomButton(
+                        isLoading: isLoading,
+                        title: AppLocalizations.of(context)!.login,
+                        onTap: login,
+                      ),
+                      SizedBox(height: height * 0.04),
+                      Row(
+                        mainAxisAlignment: .center,
+                        children: [
+                          Text(
+                            AppLocalizations.of(context)!.dontHaveAccount,
+                            style: Theme.of(context).textTheme.displayMedium,
+                          ),
+                          CustomTextButton(
+                            onTap: () {
+                              Navigator.pushNamed(
+                                context,
+                                AppRoutes.registerRouteName,
+                              );
+                            },
+                            title: AppLocalizations.of(context)!.signup,
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: height * 0.032),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Divider(
+                              endIndent: width * 0.04,
+                              color: Theme.of(context).disabledColor,
+                            ),
+                          ),
+                          Text(
+                            AppLocalizations.of(context)!.or,
+                            style: Theme.of(context).textTheme.labelMedium,
+                          ),
+                          Expanded(
+                            child: Divider(
+                              indent: width * 0.04,
+                              color: Theme.of(context).disabledColor,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: height * 0.024),
+                      CustomButton(
+                        hasIcon: true,
+                        title: AppLocalizations.of(context)!.loginWithGoogle,
+                        onTap: signInWithGoogleButton,
+                        child: Image.asset(AppAssets.googleImage),
                       ),
                     ],
                   ),
-                  SizedBox(height: height * 0.024),
-                  CustomButton(
-                    hasIcon: true,
-                    title: AppLocalizations.of(context)!.loginWithGoogle,
-                    onTap: () {},
-                    child: Image.asset(AppAssets.googleImage),
-                  ),
-                ],
+                ),
               ),
             ),
           ),
         ),
-      ),
+        if (isLoadingGoogle)
+          Container(
+            color: AppColors.transparentColor.withValues(alpha: .5),
+            child: Center(
+              child: CircularProgressIndicator(
+                color: Theme.of(context).cardColor,
+              ),
+            ),
+          ),
+      ],
     );
   }
 
   bool isLoading = false;
 
   void login() async {
+    showTopSnackBar(
+      Overlay.of(context),
+      CustomSnackBar.success(
+        message: "Good job, your release is successful. Have a nice day",
+      ),
+    );
     if (formKey.currentState!.validate()) {
       try {
         setState(() {
@@ -206,8 +227,9 @@ class _LoginViewState extends State<LoginView> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnakbarUtils.snackBar(title: 'Login Successfully', context: context),
         );
-
-        Navigator.pushNamed(context, AppRoutes.homeRouteName);
+        await Future.delayed(Duration(seconds: 1));
+        ScaffoldMessenger.of(context).hideCurrentSnackBar();
+        // Navigator.pushNamed(context, AppRoutes.homeRouteName);
       } on FirebaseAuthException catch (e) {
         if (e.code == 'invalid-credential') {
           ScaffoldMessenger.of(context).showSnackBar(
@@ -233,6 +255,40 @@ class _LoginViewState extends State<LoginView> {
           });
         }
       }
+    }
+  }
+
+  bool isLoadingGoogle = false;
+
+  void signInWithGoogleButton() async {
+    setState(() {
+      isLoadingGoogle = true;
+    });
+
+    final userCredential = await FirebaseUtils.signInWithGoogle();
+
+    if (!context.mounted) {
+      return;
+    }
+    if (userCredential != null) {
+      final user = await FirebaseUtils.readUserFromFireStore(
+        userCredential.user!.uid,
+      );
+      if (user != null) {
+        var userProvider = Provider.of<UserProvider>(context, listen: false);
+        userProvider.upadateUser(user);
+      }
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnakbarUtils.snackBar(title: 'Login Successfully', context: context),
+      );
+      await Future.delayed(Duration(seconds: 1));
+      ScaffoldMessenger.of(context).hideCurrentSnackBar();
+      if (!context.mounted) return;
+      setState(() {
+        isLoadingGoogle = false;
+      });
+      Navigator.pushNamed(context, AppRoutes.homeRouteName);
     }
   }
 }
