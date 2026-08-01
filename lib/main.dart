@@ -9,6 +9,7 @@ import 'package:evently_app/firebase_options.dart';
 import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:evently_app/providers/app_language_provider.dart';
 import 'package:evently_app/providers/app_theme_provider.dart';
+import 'package:evently_app/providers/user_provider.dart';
 import 'package:evently_app/utils/app_routes.dart';
 import 'package:evently_app/utils/app_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -23,6 +24,7 @@ void main() async {
       providers: [
         ChangeNotifierProvider(create: (context) => AppLanguageProvider()),
         ChangeNotifierProvider(create: (context) => AppThemeProvider()),
+        ChangeNotifierProvider(create: (context) => UserProvider()),
       ],
       child: const EventlyApp(),
     ),
@@ -38,7 +40,7 @@ class EventlyApp extends StatelessWidget {
     var themeProvider = Provider.of<AppThemeProvider>(context);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.cusomizeRouteName,
+      initialRoute: AppRoutes.loginRouteName,
       routes: {
         AppRoutes.cusomizeRouteName: (context) => CustomizeView(),
         AppRoutes.onboardingRouteName: (context) => OnboardingView(),

@@ -1,12 +1,18 @@
+// ignore_for_file: use_build_context_synchronously
 import 'package:evently_app/l10n/app_localizations.dart';
+import 'package:evently_app/model/user_model.dart';
 import 'package:evently_app/providers/app_theme_provider.dart';
+import 'package:evently_app/providers/user_provider.dart';
 import 'package:evently_app/utils/app_assets.dart';
 import 'package:evently_app/utils/app_colors.dart';
+import 'package:evently_app/utils/app_routes.dart';
 import 'package:evently_app/utils/app_validation.dart';
 import 'package:evently_app/utils/size_utils.dart';
+import 'package:evently_app/utils/snakbar_utils.dart';
 import 'package:evently_app/widgets/custom_button.dart';
 import 'package:evently_app/widgets/custom_text_button.dart';
 import 'package:evently_app/widgets/custom_text_field.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
@@ -20,10 +26,18 @@ class RegisterView extends StatefulWidget {
 
 class _RegisterViewState extends State<RegisterView> {
   final formKey = GlobalKey<FormState>();
-  final TextEditingController userNameController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-  final TextEditingController rePasswordController = TextEditingController();
+  final TextEditingController userNameController = TextEditingController(
+    text: 'Ahmed',
+  );
+  final TextEditingController emailController = TextEditingController(
+    text: 'ahmed@route.com',
+  );
+  final TextEditingController passwordController = TextEditingController(
+    text: 'AAaa@#123',
+  );
+  final TextEditingController rePasswordController = TextEditingController(
+    text: 'AAaa@#123',
+  );
   bool isObsecuredPassword = true;
   bool isObsecuredRePassword = true;
 
@@ -138,10 +152,9 @@ class _RegisterViewState extends State<RegisterView> {
                   ),
                   SizedBox(height: height * 0.04),
                   CustomButton(
+                    isLoading: isLoading,
                     title: AppLocalizations.of(context)!.signup,
-                    onTap: () {
-                      if (formKey.currentState!.validate()) {}
-                    },
+                    onTap: register,
                   ),
                   SizedBox(height: height * 0.02),
                   Row(
@@ -194,5 +207,59 @@ class _RegisterViewState extends State<RegisterView> {
         ),
       ),
     );
+  }
+
+  bool isLoading = false;
+  void register() async {
+    if (formKey.currentState!.validate()) {
+      try {
+        setState(() {
+          isLoading = true;
+        });
+        final credential = await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(
+              email: emailController.text,
+              password: passwordController.text,
+            );
+        var userProvider = Provider.of<UserProvider>(context, listen: false);
+        UserModel userModel = UserModel(
+          uId: credential.user?.uid ?? '',
+          email: emailController.text,
+          name: userNameController.text,
+        );
+        userProvider.upadateUser(userModel);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnakbarUtils.snackBar(
+            title: 'Created Account Successfully',
+            context: context,
+          ),
+        );
+        Navigator.pushNamed(context, AppRoutes.homeRouteName);
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'email-already-in-use') {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnakbarUtils.snackBar(
+              isError: true,
+              title: 'The account already exists for that email.',
+              context: context,
+            ),
+          );
+        }
+      } catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnakbarUtils.snackBar(
+            isError: true,
+            title: e.toString(),
+            context: context,
+          ),
+        );
+      } finally {
+        if (mounted) {
+          setState(() {
+            isLoading = false;
+          });
+        }
+      }
+    }
   }
 }

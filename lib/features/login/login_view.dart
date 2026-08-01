@@ -1,3 +1,4 @@
+// ignore_for_file: use_build_context_synchronously
 import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:evently_app/providers/app_theme_provider.dart';
 import 'package:evently_app/utils/app_assets.dart';
@@ -5,9 +6,11 @@ import 'package:evently_app/utils/app_colors.dart';
 import 'package:evently_app/utils/app_routes.dart';
 import 'package:evently_app/utils/app_validation.dart';
 import 'package:evently_app/utils/size_utils.dart';
+import 'package:evently_app/utils/snakbar_utils.dart';
 import 'package:evently_app/widgets/custom_button.dart';
 import 'package:evently_app/widgets/custom_text_button.dart';
 import 'package:evently_app/widgets/custom_text_field.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
@@ -21,8 +24,12 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends State<LoginView> {
   final formKey = GlobalKey<FormState>();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController emailController = TextEditingController(
+    text: 'ahmed@route.com',
+  );
+  final TextEditingController passwordController = TextEditingController(
+    text: 'AAaa@#123',
+  );
   bool isObsecured = true;
 
   @override
@@ -113,12 +120,9 @@ class _LoginViewState extends State<LoginView> {
                   ),
                   SizedBox(height: height * 0.04),
                   CustomButton(
+                    isLoading: isLoading,
                     title: AppLocalizations.of(context)!.login,
-                    onTap: () {
-                      if (formKey.currentState!.validate()) {
-                        Navigator.pushNamed(context, AppRoutes.homeRouteName);
-                      }
-                    },
+                    onTap: login,
                   ),
                   SizedBox(height: height * 0.04),
                   Row(
@@ -174,5 +178,49 @@ class _LoginViewState extends State<LoginView> {
         ),
       ),
     );
+  }
+
+  bool isLoading = false;
+
+  void login() async {
+    if (formKey.currentState!.validate()) {
+      try {
+        setState(() {
+          isLoading = true;
+        });
+        final credential = await FirebaseAuth.instance
+            .signInWithEmailAndPassword(
+              email: emailController.text,
+              password: passwordController.text,
+            );
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnakbarUtils.snackBar(title: 'Login Successfully', context: context),
+        );
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'invalid-credential') {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnakbarUtils.snackBar(
+              title: 'No user found for that email or wrong password.',
+              isError: true,
+              context: context,
+            ),
+          );
+        }
+      } catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnakbarUtils.snackBar(
+            title: e.toString(),
+            isError: true,
+            context: context,
+          ),
+        );
+      } finally {
+        if (mounted) {
+          setState(() {
+            isLoading = false;
+          });
+        }
+      }
+    }
   }
 }

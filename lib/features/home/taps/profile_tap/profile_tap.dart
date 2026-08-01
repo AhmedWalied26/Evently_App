@@ -2,12 +2,14 @@ import 'package:evently_app/features/home/taps/profile_tap/widgets/custom_bottom
 import 'package:evently_app/features/home/taps/profile_tap/widgets/setting_tile.dart';
 import 'package:evently_app/features/home/taps/profile_tap/widgets/switch_mode.dart';
 import 'package:evently_app/l10n/app_localizations.dart';
+import 'package:evently_app/providers/user_provider.dart';
 import 'package:evently_app/utils/app_assets.dart';
 import 'package:evently_app/utils/app_colors.dart';
 import 'package:evently_app/utils/app_routes.dart';
 import 'package:evently_app/utils/size_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 
 class ProfileTap extends StatelessWidget {
   const ProfileTap({super.key});
@@ -16,6 +18,7 @@ class ProfileTap extends StatelessWidget {
   Widget build(BuildContext context) {
     var height = context.height;
     var width = context.width;
+    var userProvider = Provider.of<UserProvider>(context, listen: false);
     return SafeArea(
       child: Column(
         children: [
@@ -26,12 +29,12 @@ class ProfileTap extends StatelessWidget {
           ),
           SizedBox(height: height * 0.02),
           Text(
-            'Ahmed Walied',
+            userProvider.userModel!.name,
             style: Theme.of(context).textTheme.headlineLarge,
           ),
           SizedBox(height: height * 0.01),
           Text(
-            'ahmed.route@gmail.com',
+            userProvider.userModel!.email,
             style: Theme.of(context).textTheme.displayMedium,
           ),
           SizedBox(height: height * 0.042),

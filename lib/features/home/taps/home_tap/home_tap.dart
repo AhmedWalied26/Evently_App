@@ -3,6 +3,7 @@ import 'package:evently_app/features/home/taps/home_tap/widgets/event_card.dart'
 import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:evently_app/providers/app_language_provider.dart';
 import 'package:evently_app/providers/app_theme_provider.dart';
+import 'package:evently_app/providers/user_provider.dart';
 import 'package:evently_app/utils/app_colors.dart';
 import 'package:evently_app/utils/app_styles.dart';
 import 'package:evently_app/utils/size_utils.dart';
@@ -33,6 +34,7 @@ class _HomeTapState extends State<HomeTap> {
     var width = context.width;
     var languageProvider = Provider.of<AppLanguageProvider>(context);
     var themeProvider = Provider.of<AppThemeProvider>(context);
+    var userProvider = Provider.of<UserProvider>(context, listen: false);
     List<String> eventNameList = [
       AppLocalizations.of(context)!.all,
       AppLocalizations.of(context)!.sport,
@@ -55,13 +57,14 @@ class _HomeTapState extends State<HomeTap> {
               Row(
                 children: [
                   Column(
+                    crossAxisAlignment: .start,
                     children: [
                       Text(
                         AppLocalizations.of(context)!.welcomeBack,
                         style: AppStyles.regular14Grey,
                       ),
                       Text(
-                        'Ahmed Walied',
+                        userProvider.userModel!.name,
                         style: Theme.of(context).textTheme.headlineLarge,
                       ),
                     ],

@@ -10,11 +10,13 @@ class CustomButton extends StatelessWidget {
     required this.onTap,
     this.child,
     this.hasIcon = false,
+    this.isLoading = false,
   });
   final String title;
   final VoidCallback onTap;
   final Widget? child;
   final bool hasIcon;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -36,12 +38,18 @@ class CustomButton extends StatelessWidget {
         mainAxisAlignment: .center,
         children: [
           child ?? SizedBox(),
-          Text(
-            title,
-            style: hasIcon
-                ? Theme.of(context).textTheme.displayLarge
-                : AppStyles.medium20White,
-          ),
+          isLoading
+              ? SizedBox(
+                  height: 29,
+                  width: 29,
+                  child: CircularProgressIndicator(color: AppColors.whiteColor),
+                )
+              : Text(
+                  title,
+                  style: hasIcon
+                      ? Theme.of(context).textTheme.displayLarge
+                      : AppStyles.medium20White,
+                ),
         ],
       ),
     );
