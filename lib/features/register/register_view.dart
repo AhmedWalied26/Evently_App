@@ -7,6 +7,7 @@ import 'package:evently_app/utils/app_assets.dart';
 import 'package:evently_app/utils/app_colors.dart';
 import 'package:evently_app/utils/app_routes.dart';
 import 'package:evently_app/utils/app_validation.dart';
+import 'package:evently_app/utils/firebase_utils.dart';
 import 'package:evently_app/utils/size_utils.dart';
 import 'package:evently_app/utils/snakbar_utils.dart';
 import 'package:evently_app/widgets/custom_button.dart';
@@ -221,13 +222,17 @@ class _RegisterViewState extends State<RegisterView> {
               email: emailController.text,
               password: passwordController.text,
             );
-        var userProvider = Provider.of<UserProvider>(context, listen: false);
         UserModel userModel = UserModel(
           uId: credential.user?.uid ?? '',
           email: emailController.text,
           name: userNameController.text,
         );
+
+        FirebaseUtils.addUserInFireStore(userModel);
+
+        var userProvider = Provider.of<UserProvider>(context, listen: false);
         userProvider.upadateUser(userModel);
+
         ScaffoldMessenger.of(context).showSnackBar(
           SnakbarUtils.snackBar(
             title: 'Created Account Successfully',

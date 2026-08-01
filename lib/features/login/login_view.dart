@@ -1,10 +1,12 @@
 // ignore_for_file: use_build_context_synchronously
 import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:evently_app/providers/app_theme_provider.dart';
+import 'package:evently_app/providers/user_provider.dart';
 import 'package:evently_app/utils/app_assets.dart';
 import 'package:evently_app/utils/app_colors.dart';
 import 'package:evently_app/utils/app_routes.dart';
 import 'package:evently_app/utils/app_validation.dart';
+import 'package:evently_app/utils/firebase_utils.dart';
 import 'package:evently_app/utils/size_utils.dart';
 import 'package:evently_app/utils/snakbar_utils.dart';
 import 'package:evently_app/widgets/custom_button.dart';
@@ -193,9 +195,19 @@ class _LoginViewState extends State<LoginView> {
               email: emailController.text,
               password: passwordController.text,
             );
+
+        var myUser = await FirebaseUtils.readUserFromFireStore(
+          credential.user?.uid ?? '',
+        );
+
+        var userProvider = Provider.of<UserProvider>(context, listen: false);
+        userProvider.upadateUser(myUser!);
+
         ScaffoldMessenger.of(context).showSnackBar(
           SnakbarUtils.snackBar(title: 'Login Successfully', context: context),
         );
+
+        Navigator.pushNamed(context, AppRoutes.homeRouteName);
       } on FirebaseAuthException catch (e) {
         if (e.code == 'invalid-credential') {
           ScaffoldMessenger.of(context).showSnackBar(
