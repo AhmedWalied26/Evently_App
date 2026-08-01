@@ -9,6 +9,7 @@ class EventProvider extends ChangeNotifier {
   bool isLoading = false;
   List<EventModel> eventList = [];
   List<EventModel> eventFavList = [];
+  List<EventModel> eventFilterdFavList = [];
 
   Future<void> getAllEvents() async {
     isLoading = true;
@@ -67,9 +68,21 @@ class EventProvider extends ChangeNotifier {
           eventFavList = querySnapshot.docs.map((doc) {
             return doc.data();
           }).toList();
+          eventFilterdFavList = List.from(eventFavList);
           isLoading = false;
           notifyListeners();
         });
+  }
+
+  void searchFav(String text) {
+    if (text.trim().isEmpty) {
+      eventFilterdFavList = List.from(eventFavList);
+    } else {
+      eventFilterdFavList = eventFavList.where((event) {
+        return event.eventTitle.toLowerCase().contains(text.toLowerCase());
+      }).toList();
+    }
+    notifyListeners();
   }
 
   @override

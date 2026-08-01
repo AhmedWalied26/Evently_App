@@ -24,6 +24,7 @@ class _FavoritesTapState extends State<FavoritesTap> {
     });
   }
 
+  TextEditingController searchController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     var height = context.height;
@@ -39,6 +40,10 @@ class _FavoritesTapState extends State<FavoritesTap> {
           spacing: height * 0.016,
           children: [
             CustomTextField(
+              onChanged: (value) {
+                favProvider.searchFav(value);
+              },
+              controller: searchController,
               title: AppLocalizations.of(context)!.searchForEvent,
               suffix: Padding(
                 padding: EdgeInsetsDirectional.only(end: width * 0.035),
@@ -52,12 +57,19 @@ class _FavoritesTapState extends State<FavoritesTap> {
                         color: Theme.of(context).cardColor,
                       ),
                     )
-                  : favProvider.eventList.isEmpty
-                  ? Text('data')
+                  : favProvider.eventFilterdFavList.isEmpty
+                  ? Center(
+                      child: Text(
+                        searchController.text.isEmpty
+                            ? AppLocalizations.of(context)!.no_fav
+                            : AppLocalizations.of(context)!.no_search,
+                      ),
+                    )
                   : ListView.separated(
-                      itemCount: favProvider.eventFavList.length,
-                      itemBuilder: (_, index) =>
-                          EventCard(event: favProvider.eventFavList[index]),
+                      itemCount: favProvider.eventFilterdFavList.length,
+                      itemBuilder: (_, index) => EventCard(
+                        event: favProvider.eventFilterdFavList[index],
+                      ),
                       separatorBuilder: (_, index) =>
                           SizedBox(height: height * 0.016),
                     ),

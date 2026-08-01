@@ -206,8 +206,11 @@ class AppLocalizationsAr extends AppLocalizations {
   String get jun => '21 يناير';
 
   @override
-  String get no_events => 'لم تتم إضافة أي أحداث حتى الآن';
+  String get no_events => 'لا توجد فعاليات مضافة حتى الآن';
 
   @override
-  String get no_fav => 'لا توجد عناصر مفضلة حتى الآن';
+  String get no_fav => 'لا توجد فعاليات مفضلة حتى الآن';
+
+  @override
+  String get no_search => 'لا توجد نتائج مطابقة للبحث';
 }

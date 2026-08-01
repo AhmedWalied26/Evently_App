@@ -64,6 +64,7 @@
 "discoverUniqueExhibitionsAndTalents": "Discover unique exhibitions and talents",
 "weAreGoingToPlayFootball": "We’re going to play football",
 "jun" : "21 Jun",
-"no_events":"No Events Added yet",
-"no_fav":"No Favourites yet"
+"no_events":"No events added yet",
+"no_fav":"No favorite events yet",
+"no_search":"No matching events found"
 }

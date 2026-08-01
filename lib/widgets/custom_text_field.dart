@@ -11,6 +11,7 @@ class CustomTextField extends StatelessWidget {
   final bool isObsecure;
   final int? maxLines;
   final TextInputType? type;
+  final ValueChanged<String>? onChanged;
   const CustomTextField({
     super.key,
     required this.title,
@@ -21,6 +22,7 @@ class CustomTextField extends StatelessWidget {
     this.isObsecure = false,
     this.maxLines = 1,
     this.type,
+    this.onChanged,
   });
 
   @override
@@ -28,6 +30,7 @@ class CustomTextField extends StatelessWidget {
     var height = context.height;
     var width = context.width;
     return TextFormField(
+      onChanged: onChanged,
       onTapOutside: (event) {
         FocusManager.instance.primaryFocus?.unfocus();
       },

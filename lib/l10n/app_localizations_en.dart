@@ -207,8 +207,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get jun => '21 Jun';
 
   @override
-  String get no_events => 'No Events Added yet';
+  String get no_events => 'No events added yet';
 
   @override
-  String get no_fav => 'No Favourites yet';
+  String get no_fav => 'No favorite events yet';
+
+  @override
+  String get no_search => 'No matching events found';
 }

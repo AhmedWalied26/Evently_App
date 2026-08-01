@@ -59,10 +59,11 @@
   "meeting": "اجتماع",
   "exhibition": "معرض",
   "birthdayParty": "هذه حفلة عيد ميلاد",
-"meetingForUpdatingDevelopmentMethod": "اجتماع لتحديث أسلوب التطوير",
-"discoverUniqueExhibitionsAndTalents": "اكتشف معارض ومواهب مميزة",
-"weAreGoingToPlayFootball": "سنذهب للعب كرة القدم",
-"jun" : "21 يناير",
-"no_events":"لم تتم إضافة أي أحداث حتى الآن",
-"no_fav": "لا توجد عناصر مفضلة حتى الآن"
+  "meetingForUpdatingDevelopmentMethod": "اجتماع لتحديث أسلوب التطوير",
+  "discoverUniqueExhibitionsAndTalents": "اكتشف معارض ومواهب مميزة",
+  "weAreGoingToPlayFootball": "سنذهب للعب كرة القدم",
+  "jun": "21 يناير",
+  "no_events": "لا توجد فعاليات مضافة حتى الآن",
+  "no_fav": "لا توجد فعاليات مفضلة حتى الآن",
+  "no_search": "لا توجد نتائج مطابقة للبحث"
 }
