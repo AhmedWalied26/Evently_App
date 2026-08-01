@@ -83,7 +83,7 @@ class _AddEventViewState extends State<AddEventView> {
         ? darkImagesList[selectedTab]
         : lightImagesList[selectedTab];
     return Scaffold(
-      appBar: CustomAppbar(),
+      appBar: CustomAppbar(title: 'Add event'),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: width * 0.035),
         child: SingleChildScrollView(
