@@ -1,5 +1,6 @@
 import 'package:evently_app/model/event_model.dart';
 import 'package:evently_app/providers/app_theme_provider.dart';
+import 'package:evently_app/providers/event_provider.dart';
 import 'package:evently_app/utils/app_assets.dart';
 import 'package:evently_app/utils/size_utils.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,7 @@ class EventCard extends StatelessWidget {
     var height = context.height;
     var width = context.width;
     var themeProvider = Provider.of<AppThemeProvider>(context);
+    var eventProvider = Provider.of<EventProvider>(context);
     return Container(
       height: height * 0.193,
       width: .infinity,
@@ -56,11 +58,18 @@ class EventCard extends StatelessWidget {
                 mainAxisAlignment: .spaceBetween,
                 children: [
                   Text(event.eventTitle),
-                  SvgPicture.asset(
-                    AppAssets.favoriteIcon,
-                    colorFilter: ColorFilter.mode(
-                      Theme.of(context).cardColor,
-                      .srcIn,
+                  InkWell(
+                    onTap: () async {
+                      eventProvider.updateFavorite(event);
+                    },
+                    child: SvgPicture.asset(
+                      event.isFavourite
+                          ? AppAssets.favoriteFillLightIcon
+                          : AppAssets.favoriteIcon,
+                      colorFilter: ColorFilter.mode(
+                        Theme.of(context).cardColor,
+                        .srcIn,
+                      ),
                     ),
                   ),
                 ],

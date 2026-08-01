@@ -11,7 +11,7 @@ class EventModel {
   final String eventTitle;
   final String eventDescription;
   final DateTime eventDate;
-  final bool isFavourite;
+  bool isFavourite;
 
   EventModel({
     this.eventId,

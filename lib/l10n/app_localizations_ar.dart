@@ -207,4 +207,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get no_events => 'لم تتم إضافة أي أحداث حتى الآن';
+
+  @override
+  String get no_fav => 'لا توجد عناصر مفضلة حتى الآن';
 }

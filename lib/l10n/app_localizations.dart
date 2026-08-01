@@ -485,8 +485,14 @@ abstract class AppLocalizations {
   /// No description provided for @no_events.
   ///
   /// In en, this message translates to:
-  /// **'No Events Added yet '**
+  /// **'No Events Added yet'**
   String get no_events;
+
+  /// No description provided for @no_fav.
+  ///
+  /// In en, this message translates to:
+  /// **'No Favourites yet'**
+  String get no_fav;
 }
 
 class _AppLocalizationsDelegate
