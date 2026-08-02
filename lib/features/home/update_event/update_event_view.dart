@@ -160,16 +160,18 @@ class _UpdateEventViewState extends State<UpdateEventView> {
               SizedBox(height: height * 0.02),
               DateTimeItem(
                 title: AppLocalizations.of(context)!.eventDate,
-                titleUnderline: DateFormat(
-                  'dd MMM, yyyy',
-                ).format(args.eventDate),
+                titleUnderline: formatDate == ''
+                    ? DateFormat('dd MMM, yyyy').format(args.eventDate)
+                    : formatDate,
                 imageIcon: AppAssets.eventDateLightIcon,
                 onTap: onChangeDate,
               ),
               DateTimeItem(
                 onTap: onChangeTime,
                 title: AppLocalizations.of(context)!.eventTime,
-                titleUnderline: DateFormat('HH:mm a').format(args.eventDate),
+                titleUnderline: formatTime == ''
+                    ? DateFormat('HH:mm a').format(args.eventDate)
+                    : formatTime,
                 imageIcon: AppAssets.eventTimeLightIcon,
               ),
             ],

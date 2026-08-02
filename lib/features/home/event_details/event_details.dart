@@ -105,7 +105,7 @@ class _EventDeatilsViewState extends State<EventDeatilsView> {
                       crossAxisAlignment: .start,
                       children: [
                         Text(
-                          DateFormat('yy MMMM').format(args.eventDate),
+                          DateFormat('dd MMMM').format(args.eventDate),
                           style: Theme.of(context).textTheme.headlineMedium,
                         ),
                         Text(
