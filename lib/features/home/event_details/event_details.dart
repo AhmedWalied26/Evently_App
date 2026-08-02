@@ -6,6 +6,7 @@ import 'package:evently_app/providers/app_theme_provider.dart';
 import 'package:evently_app/utils/app_assets.dart';
 import 'package:evently_app/utils/app_routes.dart';
 import 'package:evently_app/utils/app_styles.dart';
+import 'package:evently_app/utils/firebase_utils.dart';
 import 'package:evently_app/utils/size_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -28,6 +29,14 @@ class _EventDeatilsViewState extends State<EventDeatilsView> {
     var themeProvider = Provider.of<AppThemeProvider>(context);
     return Scaffold(
       appBar: CustomAppbar(
+        onTrashClick: () async {
+          await deleteEventButton(args);
+          Navigator.pushNamedAndRemoveUntil(
+            context,
+            AppRoutes.homeRouteName,
+            (route) => false,
+          );
+        },
         onEditClick: () {
           Navigator.pushNamed(
             context,
@@ -134,5 +143,9 @@ class _EventDeatilsViewState extends State<EventDeatilsView> {
         ),
       ),
     );
+  }
+
+  Future<void> deleteEventButton(EventModel args) async {
+    await FirebaseUtils.deleteEvent(args);
   }
 }

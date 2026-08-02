@@ -95,4 +95,12 @@ class FirebaseUtils {
         .then((value) {})
         .catchError((error) {});
   }
+
+  static Future<void> deleteEvent(EventModel event) {
+    return getEventCollection()
+        .doc(event.eventId)
+        .delete()
+        .then((value) {})
+        .catchError((erroe) {});
+  }
 }

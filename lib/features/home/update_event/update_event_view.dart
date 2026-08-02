@@ -69,7 +69,7 @@ class _UpdateEventViewState extends State<UpdateEventView> {
       controllerDescription = TextEditingController(
         text: args.eventDescription,
       );
-      selectedTab = args.eventCategoryIndex;
+      selectedTab = args.eventCategoryIndex - 1;
       selectedDate = args.eventDate;
       initialized = true;
     }
@@ -212,7 +212,7 @@ class _UpdateEventViewState extends State<UpdateEventView> {
               eventName: eventNameList[selectedTab],
               eventTitle: controllerTitle.text,
               eventDescription: controllerDescription.text,
-              eventCategoryIndex: selectedTab,
+              eventCategoryIndex: selectedTab + 1,
               eventDate: selectedDate ?? args.eventDate,
             );
             await updateEvent(updatedEvent);
