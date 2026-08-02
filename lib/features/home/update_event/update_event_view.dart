@@ -205,6 +205,13 @@ class _UpdateEventViewState extends State<UpdateEventView> {
             setState(() {
               isLoading = true;
             });
+            DateTime finalDateTime = DateTime(
+              (selectedDate ?? args.eventDate).year,
+              (selectedDate ?? args.eventDate).month,
+              (selectedDate ?? args.eventDate).day,
+              selectedTime?.hour ?? args.eventDate.hour,
+              selectedTime?.minute ?? args.eventDate.minute,
+            );
             final updatedEvent = EventModel(
               eventId: args.eventId,
               eventLightImage: lightImagesList[selectedTab],
@@ -213,7 +220,7 @@ class _UpdateEventViewState extends State<UpdateEventView> {
               eventTitle: controllerTitle.text,
               eventDescription: controllerDescription.text,
               eventCategoryIndex: selectedTab + 1,
-              eventDate: selectedDate ?? args.eventDate,
+              eventDate: finalDateTime,
             );
             await updateEvent(updatedEvent);
             setState(() {
