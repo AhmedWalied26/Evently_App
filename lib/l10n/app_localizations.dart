@@ -505,6 +505,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Update Event'**
   String get update_event;
+
+  /// No description provided for @forgot_password_description.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your email address and we\'ll send\nyou a link to reset your password.'**
+  String get forgot_password_description;
+
+  /// No description provided for @email_address.
+  ///
+  /// In en, this message translates to:
+  /// **'Email Address'**
+  String get email_address;
+
+  /// No description provided for @email_placeholder.
+  ///
+  /// In en, this message translates to:
+  /// **'example@gmail.com'**
+  String get email_placeholder;
+
+  /// No description provided for @remember_your_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Remember your password?'**
+  String get remember_your_password;
+
+  /// No description provided for @email_sent.
+  ///
+  /// In en, this message translates to:
+  /// **'Email sent!'**
+  String get email_sent;
+
+  /// No description provided for @email_sent_description.
+  ///
+  /// In en, this message translates to:
+  /// **'We\'ve sent a password reset link to'**
+  String get email_sent_description;
+
+  /// No description provided for @check_your_inbox.
+  ///
+  /// In en, this message translates to:
+  /// **'Please check your inbox and follow\nthe instructions to reset your password.'**
+  String get check_your_inbox;
+
+  /// No description provided for @back_to_login.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to Login'**
+  String get back_to_login;
 }
 
 class _AppLocalizationsDelegate

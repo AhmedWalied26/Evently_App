@@ -216,4 +216,31 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get update_event => 'تعديل الفعالية';
+
+  @override
+  String get forgot_password_description =>
+      'أدخل عنوان بريدك الإلكتروني وسنرسل\nإليك رابطًا لإعادة تعيين كلمة المرور.';
+
+  @override
+  String get email_address => 'البريد الإلكتروني';
+
+  @override
+  String get email_placeholder => 'example@gmail.com';
+
+  @override
+  String get remember_your_password => 'هل تتذكر كلمة المرور؟';
+
+  @override
+  String get email_sent => 'تم إرسال البريد الإلكتروني!';
+
+  @override
+  String get email_sent_description =>
+      'لقد أرسلنا رابطًا لإعادة تعيين كلمة المرور إلى';
+
+  @override
+  String get check_your_inbox =>
+      'يرجى التحقق من صندوق الوارد واتباع\nالتعليمات لإعادة تعيين كلمة المرور.';
+
+  @override
+  String get back_to_login => 'العودة إلى تسجيل الدخول';
 }

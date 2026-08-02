@@ -217,4 +217,30 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get update_event => 'Update Event';
+
+  @override
+  String get forgot_password_description =>
+      'Enter your email address and we\'ll send\nyou a link to reset your password.';
+
+  @override
+  String get email_address => 'Email Address';
+
+  @override
+  String get email_placeholder => 'example@gmail.com';
+
+  @override
+  String get remember_your_password => 'Remember your password?';
+
+  @override
+  String get email_sent => 'Email sent!';
+
+  @override
+  String get email_sent_description => 'We\'ve sent a password reset link to';
+
+  @override
+  String get check_your_inbox =>
+      'Please check your inbox and follow\nthe instructions to reset your password.';
+
+  @override
+  String get back_to_login => 'Back to Login';
 }

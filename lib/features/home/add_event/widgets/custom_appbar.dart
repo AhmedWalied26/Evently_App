@@ -1,5 +1,6 @@
 import 'package:evently_app/features/onboarding/widgets/skip_button.dart';
 import 'package:evently_app/utils/app_assets.dart';
+import 'package:evently_app/utils/app_colors.dart';
 import 'package:evently_app/utils/size_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -47,6 +48,7 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
         Visibility(
           visible: hasIcon,
           child: InkWell(
+            overlayColor: WidgetStatePropertyAll(AppColors.transparentColor),
             onTap: onEditClick,
             child: Container(
               padding: .all(width * 0.01),
@@ -63,6 +65,7 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
         Visibility(
           visible: hasIcon,
           child: InkWell(
+            overlayColor: WidgetStatePropertyAll(AppColors.transparentColor),
             onTap: onTrashClick,
             child: Container(
               padding: .all(width * 0.01),

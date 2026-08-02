@@ -22,6 +22,13 @@ class FirebaseUtils {
     return documentRef.set(usermodel);
   }
 
+  static Future<void> resetPasswordWithEmail(String email) async {
+    return await FirebaseAuth.instance
+        .sendPasswordResetEmail(email: email)
+        .then((value) {})
+        .catchError((e) {});
+  }
+
   static Future<UserModel?> readUserFromFireStore(String uId) async {
     var querySnapshot = await getUserCollection().doc(uId).get();
     return querySnapshot.data();
@@ -102,5 +109,14 @@ class FirebaseUtils {
         .delete()
         .then((value) {})
         .catchError((erroe) {});
+  }
+
+  static Future<bool> checkEmail(String email) async {
+    final query = await getUserCollection()
+        .where('email', isEqualTo: email)
+        .limit(1)
+        .get();
+
+    return query.docs.isNotEmpty;
   }
 }
