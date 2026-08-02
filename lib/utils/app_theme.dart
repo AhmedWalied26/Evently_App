@@ -1,9 +1,16 @@
 import 'package:evently_app/utils/app_colors.dart';
 import 'package:evently_app/utils/app_styles.dart';
+import 'package:evently_app/utils/custom_page_trans.dart';
 import 'package:flutter/material.dart';
 
 class AppTheme {
   static final ThemeData lightTheme = ThemeData(
+    pageTransitionsTheme: const PageTransitionsTheme(
+      builders: {
+        TargetPlatform.android: CustomPageTransitionsBuilder(),
+        TargetPlatform.iOS: CustomPageTransitionsBuilder(),
+      },
+    ),
     timePickerTheme: TimePickerThemeData(
       backgroundColor: AppColors.whiteColor,
       hourMinuteColor: AppColors.mainLightColor,
@@ -135,6 +142,13 @@ class AppTheme {
     ),
   );
   static final ThemeData darkTheme = ThemeData(
+    pageTransitionsTheme: const PageTransitionsTheme(
+      builders: {
+        TargetPlatform.android: CustomPageTransitionsBuilder(),
+        TargetPlatform.iOS: CustomPageTransitionsBuilder(),
+      },
+    ),
+
     timePickerTheme: TimePickerThemeData(
       dialTextColor: WidgetStateColor.resolveWith((states) {
         if (states.contains(WidgetState.selected)) {
