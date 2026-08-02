@@ -24,15 +24,7 @@ class EventCard extends StatelessWidget {
         Navigator.pushNamed(
           context,
           AppRoutes.eventDetailsRouteName,
-          arguments: EventModel(
-            eventLightImage: event.eventLightImage,
-            eventDarkImage: event.eventDarkImage,
-            eventName: event.eventName,
-            eventTitle: event.eventTitle,
-            eventDescription: event.eventDescription,
-            eventCategoryIndex: event.eventCategoryIndex,
-            eventDate: event.eventDate,
-          ),
+          arguments: event,
         );
       },
       child: Container(

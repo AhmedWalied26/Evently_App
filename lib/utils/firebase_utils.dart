@@ -79,4 +79,20 @@ class FirebaseUtils {
     }
     return null;
   }
+
+  static Future<void> editEvent(EventModel event) {
+    return getEventCollection()
+        .doc(event.eventId)
+        .update({
+          'event_light_image': event.eventLightImage,
+          'event_dark_image': event.eventDarkImage,
+          'event_name': event.eventName,
+          'event_title': event.eventTitle,
+          'event_description': event.eventDescription,
+          'event_date': event.eventDate,
+          'event_category_index': event.eventCategoryIndex,
+        })
+        .then((value) {})
+        .catchError((error) {});
+  }
 }

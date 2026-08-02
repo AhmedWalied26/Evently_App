@@ -7,7 +7,9 @@ import 'package:evently_app/model/event_model.dart';
 import 'package:evently_app/providers/app_theme_provider.dart';
 import 'package:evently_app/utils/app_assets.dart';
 import 'package:evently_app/utils/app_colors.dart';
+import 'package:evently_app/utils/app_routes.dart';
 import 'package:evently_app/utils/app_validation.dart';
+import 'package:evently_app/utils/firebase_utils.dart';
 import 'package:evently_app/utils/size_utils.dart';
 import 'package:evently_app/widgets/custom_button.dart';
 import 'package:evently_app/widgets/custom_text_field.dart';
@@ -53,12 +55,31 @@ class _UpdateEventViewState extends State<UpdateEventView> {
   String formatDate = '';
   String formatTime = '';
 
+  late TextEditingController controllerTitle;
+  late TextEditingController controllerDescription;
+  late EventModel args;
+  bool initialized = false;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (!initialized) {
+      args = ModalRoute.of(context)!.settings.arguments as EventModel;
+      controllerTitle = TextEditingController(text: args.eventTitle);
+      controllerDescription = TextEditingController(
+        text: args.eventDescription,
+      );
+      selectedTab = args.eventCategoryIndex;
+      selectedDate = args.eventDate;
+      initialized = true;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     var height = context.height;
     var width = context.width;
     var themeProvider = Provider.of<AppThemeProvider>(context);
-    var args = ModalRoute.of(context)!.settings.arguments as EventModel;
     List<String> eventNameList = [
       AppLocalizations.of(context)!.sport,
       AppLocalizations.of(context)!.birthday,
@@ -66,12 +87,6 @@ class _UpdateEventViewState extends State<UpdateEventView> {
       AppLocalizations.of(context)!.bookClub,
       AppLocalizations.of(context)!.exhibition,
     ];
-    TextEditingController controllerTitle = TextEditingController(
-      text: args.eventTitle,
-    );
-    TextEditingController controllerDescription = TextEditingController(
-      text: args.eventDescription,
-    );
     return Scaffold(
       appBar: CustomAppbar(title: 'Edit Event'),
       body: Padding(
@@ -184,12 +199,41 @@ class _UpdateEventViewState extends State<UpdateEventView> {
           vertical: height * 0.03,
         ),
         child: CustomButton(
-          // isLoading: isLoading,
+          isLoading: isLoading,
           title: AppLocalizations.of(context)!.update_event,
-          onTap: () {},
+          onTap: () async {
+            setState(() {
+              isLoading = true;
+            });
+            final updatedEvent = EventModel(
+              eventId: args.eventId,
+              eventLightImage: lightImagesList[selectedTab],
+              eventDarkImage: darkImagesList[selectedTab],
+              eventName: eventNameList[selectedTab],
+              eventTitle: controllerTitle.text,
+              eventDescription: controllerDescription.text,
+              eventCategoryIndex: selectedTab,
+              eventDate: selectedDate ?? args.eventDate,
+            );
+            await updateEvent(updatedEvent);
+            setState(() {
+              isLoading = false;
+            });
+            Navigator.pushNamedAndRemoveUntil(
+              context,
+              AppRoutes.homeRouteName,
+              (route) => false,
+            );
+          },
         ),
       ),
     );
+  }
+
+  bool isLoading = false;
+
+  Future<void> updateEvent(EventModel event) async {
+    await FirebaseUtils.editEvent(event);
   }
 
   void onChangeDate() async {

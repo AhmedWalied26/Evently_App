@@ -44,7 +44,7 @@ class EventlyApp extends StatelessWidget {
     var themeProvider = Provider.of<AppThemeProvider>(context);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.cusomizeRouteName,
+      initialRoute: AppRoutes.loginRouteName,
       routes: {
         AppRoutes.cusomizeRouteName: (context) => CustomizeView(),
         AppRoutes.onboardingRouteName: (context) => OnboardingView(),

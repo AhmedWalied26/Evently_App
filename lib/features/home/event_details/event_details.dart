@@ -32,15 +32,7 @@ class _EventDeatilsViewState extends State<EventDeatilsView> {
           Navigator.pushNamed(
             context,
             AppRoutes.updateEventRouteName,
-            arguments: EventModel(
-              eventLightImage: args.eventLightImage,
-              eventDarkImage: args.eventDarkImage,
-              eventName: args.eventName,
-              eventTitle: args.eventTitle,
-              eventDescription: args.eventDescription,
-              eventCategoryIndex: args.eventCategoryIndex,
-              eventDate: args.eventDate,
-            ),
+            arguments: args,
           );
         },
         title: 'Event details',
