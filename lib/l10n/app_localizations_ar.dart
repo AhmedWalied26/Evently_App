@@ -267,4 +267,93 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get event => 'فعالية';
+
+  @override
+  String get event_updated_successfully => 'تم تحديث الفعالية بنجاح';
+
+  @override
+  String get event_added_successfully => 'تمت إضافة الفعالية بنجاح';
+
+  @override
+  String get event_deleted_successfully => 'تم حذف الفعالية بنجاح';
+
+  @override
+  String get login_successfully => 'تم تسجيل الدخول بنجاح';
+
+  @override
+  String get login_failed =>
+      'لا يوجد حساب بهذا البريد الإلكتروني أو كلمة المرور غير صحيحة.';
+
+  @override
+  String get account_created_successfully => 'تم إنشاء الحساب بنجاح';
+
+  @override
+  String get no_account_found => 'لا يوجد حساب مرتبط بهذا البريد الإلكتروني';
+
+  @override
+  String get username_required => 'اسم المستخدم مطلوب';
+
+  @override
+  String get username_min_length =>
+      'يجب أن يتكون اسم المستخدم من 3 أحرف على الأقل';
+
+  @override
+  String get username_letters_only => 'يجب أن يحتوي اسم المستخدم على أحرف فقط';
+
+  @override
+  String get email_required => 'البريد الإلكتروني مطلوب';
+
+  @override
+  String get email_invalid => 'يرجى إدخال بريد إلكتروني صحيح';
+
+  @override
+  String get password_required => 'كلمة المرور مطلوبة';
+
+  @override
+  String get password_min_length =>
+      'يجب أن تتكون كلمة المرور من 8 أحرف على الأقل';
+
+  @override
+  String get password_uppercase => 'يجب أن تحتوي كلمة المرور على حرف كبير';
+
+  @override
+  String get password_lowercase => 'يجب أن تحتوي كلمة المرور على حرف صغير';
+
+  @override
+  String get password_number => 'يجب أن تحتوي كلمة المرور على رقم';
+
+  @override
+  String get password_special_character =>
+      'يجب أن تحتوي كلمة المرور على رمز خاص';
+
+  @override
+  String get confirm_password_required => 'يرجى تأكيد كلمة المرور';
+
+  @override
+  String get passwords_do_not_match => 'كلمتا المرور غير متطابقتين';
+
+  @override
+  String get event_title_required => 'عنوان الفعالية مطلوب';
+
+  @override
+  String get event_title_min_length =>
+      'يجب أن يتكون عنوان الفعالية من 3 أحرف على الأقل';
+
+  @override
+  String get event_title_max_length =>
+      'يجب ألا يزيد عنوان الفعالية عن 50 حرفًا';
+
+  @override
+  String get event_description_required => 'وصف الفعالية مطلوب';
+
+  @override
+  String get event_description_min_length =>
+      'يجب أن يتكون الوصف من 10 أحرف على الأقل';
+
+  @override
+  String get event_description_max_length => 'يجب ألا يزيد الوصف عن 500 حرف';
+
+  @override
+  String get account_already_exists =>
+      'يوجد حساب مسجل بالفعل بهذا البريد الإلكتروني.';
 }

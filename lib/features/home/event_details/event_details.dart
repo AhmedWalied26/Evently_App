@@ -4,6 +4,7 @@ import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:evently_app/model/event_model.dart';
 import 'package:evently_app/providers/app_theme_provider.dart';
 import 'package:evently_app/utils/app_assets.dart';
+import 'package:evently_app/utils/app_colors.dart';
 import 'package:evently_app/utils/app_routes.dart';
 import 'package:evently_app/utils/app_styles.dart';
 import 'package:evently_app/utils/dialog_utils.dart';
@@ -11,6 +12,7 @@ import 'package:evently_app/utils/firebase_utils.dart';
 import 'package:evently_app/utils/size_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
@@ -46,6 +48,15 @@ class _EventDeatilsViewState extends State<EventDeatilsView> {
                 AppRoutes.homeRouteName,
                 (route) => false,
               );
+              Fluttertoast.showToast(
+                msg: AppLocalizations.of(context)!.event_deleted_successfully,
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.TOP,
+                timeInSecForIosWeb: 1,
+                backgroundColor: AppColors.greenColor,
+                textColor: AppColors.whiteColor,
+                fontSize: 16,
+              );
             },
           );
         },
@@ -56,7 +67,7 @@ class _EventDeatilsViewState extends State<EventDeatilsView> {
             arguments: args,
           );
         },
-        title: AppLocalizations.of(context)!.edit_event,
+        title: AppLocalizations.of(context)!.eventDetails,
         hasIcon: true,
       ),
       body: Padding(

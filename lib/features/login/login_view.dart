@@ -75,7 +75,7 @@ class _LoginViewState extends State<LoginView> {
                       CustomTextField(
                         type: .emailAddress,
                         validation: (value) {
-                          return AppValidation.validateEmail(value);
+                          return AppValidation.validateEmail(context, value);
                         },
                         controller: emailController,
                         title: AppLocalizations.of(context)!.enterYourEmail,
@@ -86,7 +86,7 @@ class _LoginViewState extends State<LoginView> {
                         isObsecure: isObsecured,
                         controller: passwordController,
                         validation: (value) {
-                          return AppValidation.validatePassword(value);
+                          return AppValidation.validatePassword(context, value);
                         },
                         title: AppLocalizations.of(context)!.enterYourPassword,
                         prefix: SvgPicture.asset(AppAssets.passwordIcon),
@@ -217,7 +217,10 @@ class _LoginViewState extends State<LoginView> {
         userProvider.upadateUser(myUser!);
 
         ScaffoldMessenger.of(context).showSnackBar(
-          SnakbarUtils.snackBar(title: 'Login Successfully', context: context),
+          SnakbarUtils.snackBar(
+            title: AppLocalizations.of(context)!.login_successfully,
+            context: context,
+          ),
         );
         await Future.delayed(Duration(seconds: 1));
         ScaffoldMessenger.of(context).hideCurrentSnackBar();
@@ -226,7 +229,7 @@ class _LoginViewState extends State<LoginView> {
         if (e.code == 'invalid-credential') {
           ScaffoldMessenger.of(context).showSnackBar(
             SnakbarUtils.snackBar(
-              title: 'No user found for that email or wrong password.',
+              title: AppLocalizations.of(context)!.no_account_found,
               isError: true,
               context: context,
             ),

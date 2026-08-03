@@ -14,6 +14,7 @@ import 'package:evently_app/utils/size_utils.dart';
 import 'package:evently_app/widgets/custom_button.dart';
 import 'package:evently_app/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
@@ -154,7 +155,7 @@ class _UpdateEventViewState extends State<UpdateEventView> {
               CustomTextField(
                 controller: controllerTitle,
                 validation: (value) {
-                  return AppValidation.validateEventTitle(value);
+                  return AppValidation.validateEventTitle(context, value);
                 },
                 title: controllerTitle.text,
               ),
@@ -168,7 +169,7 @@ class _UpdateEventViewState extends State<UpdateEventView> {
                 maxLines: 6,
                 controller: controllerDescription,
                 validation: (value) {
-                  return AppValidation.validateEventTitle(value);
+                  return AppValidation.validateEventTitle(context, value);
                 },
                 title: controllerDescription.text,
               ),
@@ -230,6 +231,15 @@ class _UpdateEventViewState extends State<UpdateEventView> {
               context,
               AppRoutes.homeRouteName,
               (route) => false,
+            );
+            Fluttertoast.showToast(
+              msg: AppLocalizations.of(context)!.event_updated_successfully,
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.TOP,
+              timeInSecForIosWeb: 1,
+              backgroundColor: AppColors.greenColor,
+              textColor: AppColors.whiteColor,
+              fontSize: 16,
             );
           },
         ),

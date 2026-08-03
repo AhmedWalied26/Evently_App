@@ -51,7 +51,7 @@ class _DefaultBodyState extends State<DefaultBody> {
         CustomTextField(
           type: .emailAddress,
           validation: (value) {
-            return AppValidation.validateEmail(value);
+            return AppValidation.validateEmail(context, value);
           },
           controller: widget.emailController,
           title: AppLocalizations.of(context)!.email_placeholder,

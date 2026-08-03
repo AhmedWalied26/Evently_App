@@ -601,6 +601,168 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Event'**
   String get event;
+
+  /// No description provided for @event_updated_successfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Event updated successfully'**
+  String get event_updated_successfully;
+
+  /// No description provided for @event_added_successfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Event added successfully'**
+  String get event_added_successfully;
+
+  /// No description provided for @event_deleted_successfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Event deleted successfully'**
+  String get event_deleted_successfully;
+
+  /// No description provided for @login_successfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Login successful'**
+  String get login_successfully;
+
+  /// No description provided for @login_failed.
+  ///
+  /// In en, this message translates to:
+  /// **'No user found for that email or wrong password.'**
+  String get login_failed;
+
+  /// No description provided for @account_created_successfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Account created successfully'**
+  String get account_created_successfully;
+
+  /// No description provided for @no_account_found.
+  ///
+  /// In en, this message translates to:
+  /// **'No account found with this email'**
+  String get no_account_found;
+
+  /// No description provided for @username_required.
+  ///
+  /// In en, this message translates to:
+  /// **'Username is required'**
+  String get username_required;
+
+  /// No description provided for @username_min_length.
+  ///
+  /// In en, this message translates to:
+  /// **'Username must be at least 3 characters'**
+  String get username_min_length;
+
+  /// No description provided for @username_letters_only.
+  ///
+  /// In en, this message translates to:
+  /// **'Username can only contain letters'**
+  String get username_letters_only;
+
+  /// No description provided for @email_required.
+  ///
+  /// In en, this message translates to:
+  /// **'Email is required'**
+  String get email_required;
+
+  /// No description provided for @email_invalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid email'**
+  String get email_invalid;
+
+  /// No description provided for @password_required.
+  ///
+  /// In en, this message translates to:
+  /// **'Password is required'**
+  String get password_required;
+
+  /// No description provided for @password_min_length.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be at least 8 characters'**
+  String get password_min_length;
+
+  /// No description provided for @password_uppercase.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must contain an uppercase letter'**
+  String get password_uppercase;
+
+  /// No description provided for @password_lowercase.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must contain a lowercase letter'**
+  String get password_lowercase;
+
+  /// No description provided for @password_number.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must contain a number'**
+  String get password_number;
+
+  /// No description provided for @password_special_character.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must contain a special character'**
+  String get password_special_character;
+
+  /// No description provided for @confirm_password_required.
+  ///
+  /// In en, this message translates to:
+  /// **'Please confirm your password'**
+  String get confirm_password_required;
+
+  /// No description provided for @passwords_do_not_match.
+  ///
+  /// In en, this message translates to:
+  /// **'Passwords do not match'**
+  String get passwords_do_not_match;
+
+  /// No description provided for @event_title_required.
+  ///
+  /// In en, this message translates to:
+  /// **'Event title is required'**
+  String get event_title_required;
+
+  /// No description provided for @event_title_min_length.
+  ///
+  /// In en, this message translates to:
+  /// **'Event title must be at least 3 characters'**
+  String get event_title_min_length;
+
+  /// No description provided for @event_title_max_length.
+  ///
+  /// In en, this message translates to:
+  /// **'Event title must be less than 50 characters'**
+  String get event_title_max_length;
+
+  /// No description provided for @event_description_required.
+  ///
+  /// In en, this message translates to:
+  /// **'Event description is required'**
+  String get event_description_required;
+
+  /// No description provided for @event_description_min_length.
+  ///
+  /// In en, this message translates to:
+  /// **'Description must be at least 10 characters'**
+  String get event_description_min_length;
+
+  /// No description provided for @event_description_max_length.
+  ///
+  /// In en, this message translates to:
+  /// **'Description must be less than 500 characters'**
+  String get event_description_max_length;
+
+  /// No description provided for @account_already_exists.
+  ///
+  /// In en, this message translates to:
+  /// **'An account already exists for this email.'**
+  String get account_already_exists;
 }
 
 class _AppLocalizationsDelegate

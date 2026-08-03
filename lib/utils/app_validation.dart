@@ -1,99 +1,106 @@
+import 'package:evently_app/l10n/app_localizations.dart';
+import 'package:flutter/material.dart';
+
 class AppValidation {
-  static String? validateUserName(String? value) {
+  static String? validateUserName(BuildContext context, String? value) {
     if (value == null || value.trim().isEmpty) {
-      return 'Username is required';
+      return AppLocalizations.of(context)!.username_required;
     }
 
     if (value.trim().length < 3) {
-      return 'Username must be at least 3 characters';
+      return AppLocalizations.of(context)!.username_min_length;
     }
 
     if (!RegExp(r'^[a-zA-Z\u0600-\u06FF\s]+$').hasMatch(value.trim())) {
-      return 'Username can only contain letters';
+      return AppLocalizations.of(context)!.username_letters_only;
     }
 
     return null;
   }
 
-  static String? validateEmail(String? value) {
+  static String? validateEmail(BuildContext context, String? value) {
     if (value == null || value.trim().isEmpty) {
-      return 'Email is required';
+      return AppLocalizations.of(context)!.email_required;
     }
 
     if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value.trim())) {
-      return 'Enter a valid email';
+      return AppLocalizations.of(context)!.email_invalid;
     }
 
     return null;
   }
 
-  static String? validatePassword(String? value) {
+  static String? validatePassword(BuildContext context, String? value) {
     if (value == null || value.isEmpty) {
-      return 'Password is required';
+      return AppLocalizations.of(context)!.password_required;
     }
 
     if (value.length < 8) {
-      return 'Password must be at least 8 characters';
+      return AppLocalizations.of(context)!.password_min_length;
     }
 
     if (!RegExp(r'(?=.*[A-Z])').hasMatch(value)) {
-      return 'Password must contain an uppercase letter';
+      return AppLocalizations.of(context)!.password_uppercase;
     }
 
     if (!RegExp(r'(?=.*[a-z])').hasMatch(value)) {
-      return 'Password must contain a lowercase letter';
+      return AppLocalizations.of(context)!.password_lowercase;
     }
 
     if (!RegExp(r'(?=.*\d)').hasMatch(value)) {
-      return 'Password must contain a number';
+      return AppLocalizations.of(context)!.password_number;
     }
 
     if (!RegExp(r'(?=.*[@$!%*?&])').hasMatch(value)) {
-      return 'Password must contain a special character';
+      return AppLocalizations.of(context)!.password_special_character;
     }
 
     return null;
   }
 
-  static String? validateConfirmPassword(String? value, String password) {
+  static String? validateConfirmPassword(
+    BuildContext context,
+    String? value,
+    String password,
+  ) {
     if (value == null || value.isEmpty) {
-      return 'Please confirm your password';
+      return AppLocalizations.of(context)!.confirm_password_required;
     }
 
     if (value != password) {
-      return 'Passwords do not match';
+      return AppLocalizations.of(context)!.passwords_do_not_match;
     }
 
     return null;
   }
 
-  static String? validateEventTitle(String? value) {
+  static String? validateEventTitle(BuildContext context, String? value) {
     if (value == null || value.trim().isEmpty) {
-      return 'Event title is required';
+      return AppLocalizations.of(context)!.event_title_required;
     }
 
     if (value.trim().length < 3) {
-      return 'Event title must be at least 3 characters';
+      return AppLocalizations.of(context)!.event_title_min_length;
     }
 
     if (value.trim().length > 50) {
-      return 'Event title must be less than 50 characters';
+      return AppLocalizations.of(context)!.event_title_max_length;
     }
 
     return null;
   }
 
-  static String? validateEventDescription(String? value) {
+  static String? validateEventDescription(BuildContext context, String? value) {
     if (value == null || value.trim().isEmpty) {
-      return 'Event description is required';
+      return AppLocalizations.of(context)!.event_description_required;
     }
 
     if (value.trim().length < 10) {
-      return 'Description must be at least 10 characters';
+      return AppLocalizations.of(context)!.event_description_min_length;
     }
 
     if (value.trim().length > 500) {
-      return 'Description must be less than 500 characters';
+      return AppLocalizations.of(context)!.event_description_max_length;
     }
 
     return null;

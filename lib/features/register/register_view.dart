@@ -85,7 +85,7 @@ class _RegisterViewState extends State<RegisterView> {
                       CustomTextField(
                         controller: userNameController,
                         validation: (value) {
-                          return AppValidation.validateUserName(value);
+                          return AppValidation.validateUserName(context, value);
                         },
                         title: AppLocalizations.of(context)!.enterYourName,
                         prefix: SvgPicture.asset(AppAssets.profileIcon),
@@ -95,7 +95,7 @@ class _RegisterViewState extends State<RegisterView> {
                         type: .emailAddress,
                         controller: emailController,
                         validation: (value) {
-                          return AppValidation.validateEmail(value);
+                          return AppValidation.validateEmail(context, value);
                         },
                         title: AppLocalizations.of(context)!.enterYourEmail,
                         prefix: SvgPicture.asset(AppAssets.emailIcon),
@@ -105,7 +105,7 @@ class _RegisterViewState extends State<RegisterView> {
                         isObsecure: isObsecuredPassword,
                         controller: passwordController,
                         validation: (value) {
-                          return AppValidation.validatePassword(value);
+                          return AppValidation.validatePassword(context, value);
                         },
                         title: AppLocalizations.of(context)!.enterYourPassword,
                         prefix: SvgPicture.asset(AppAssets.passwordIcon),
@@ -131,6 +131,7 @@ class _RegisterViewState extends State<RegisterView> {
                         controller: rePasswordController,
                         validation: (value) {
                           return AppValidation.validateConfirmPassword(
+                            context,
                             value,
                             passwordController.text,
                           );
@@ -250,7 +251,7 @@ class _RegisterViewState extends State<RegisterView> {
 
         ScaffoldMessenger.of(context).showSnackBar(
           SnakbarUtils.snackBar(
-            title: 'Created Account Successfully',
+            title: AppLocalizations.of(context)!.account_created_successfully,
             context: context,
           ),
         );
@@ -262,7 +263,7 @@ class _RegisterViewState extends State<RegisterView> {
           ScaffoldMessenger.of(context).showSnackBar(
             SnakbarUtils.snackBar(
               isError: true,
-              title: 'The account already exists for that email.',
+              title: AppLocalizations.of(context)!.account_already_exists,
               context: context,
             ),
           );
@@ -306,7 +307,10 @@ class _RegisterViewState extends State<RegisterView> {
       }
 
       ScaffoldMessenger.of(context).showSnackBar(
-        SnakbarUtils.snackBar(title: 'Login Successfully', context: context),
+        SnakbarUtils.snackBar(
+          title: 'Created account successfully',
+          context: context,
+        ),
       );
       setState(() {
         isLoadingGoogle = false;

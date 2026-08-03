@@ -267,4 +267,91 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get event => 'Event';
+
+  @override
+  String get event_updated_successfully => 'Event updated successfully';
+
+  @override
+  String get event_added_successfully => 'Event added successfully';
+
+  @override
+  String get event_deleted_successfully => 'Event deleted successfully';
+
+  @override
+  String get login_successfully => 'Login successful';
+
+  @override
+  String get login_failed => 'No user found for that email or wrong password.';
+
+  @override
+  String get account_created_successfully => 'Account created successfully';
+
+  @override
+  String get no_account_found => 'No account found with this email';
+
+  @override
+  String get username_required => 'Username is required';
+
+  @override
+  String get username_min_length => 'Username must be at least 3 characters';
+
+  @override
+  String get username_letters_only => 'Username can only contain letters';
+
+  @override
+  String get email_required => 'Email is required';
+
+  @override
+  String get email_invalid => 'Enter a valid email';
+
+  @override
+  String get password_required => 'Password is required';
+
+  @override
+  String get password_min_length => 'Password must be at least 8 characters';
+
+  @override
+  String get password_uppercase => 'Password must contain an uppercase letter';
+
+  @override
+  String get password_lowercase => 'Password must contain a lowercase letter';
+
+  @override
+  String get password_number => 'Password must contain a number';
+
+  @override
+  String get password_special_character =>
+      'Password must contain a special character';
+
+  @override
+  String get confirm_password_required => 'Please confirm your password';
+
+  @override
+  String get passwords_do_not_match => 'Passwords do not match';
+
+  @override
+  String get event_title_required => 'Event title is required';
+
+  @override
+  String get event_title_min_length =>
+      'Event title must be at least 3 characters';
+
+  @override
+  String get event_title_max_length =>
+      'Event title must be less than 50 characters';
+
+  @override
+  String get event_description_required => 'Event description is required';
+
+  @override
+  String get event_description_min_length =>
+      'Description must be at least 10 characters';
+
+  @override
+  String get event_description_max_length =>
+      'Description must be less than 500 characters';
+
+  @override
+  String get account_already_exists =>
+      'An account already exists for this email.';
 }

@@ -14,6 +14,7 @@ import 'package:evently_app/utils/size_utils.dart';
 import 'package:evently_app/widgets/custom_button.dart';
 import 'package:evently_app/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
@@ -83,7 +84,7 @@ class _AddEventViewState extends State<AddEventView> {
         ? darkImagesList[selectedTab]
         : lightImagesList[selectedTab];
     return Scaffold(
-      appBar: CustomAppbar(title: 'Add event'),
+      appBar: CustomAppbar(title: AppLocalizations.of(context)!.addEvent),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: width * 0.035),
         child: SingleChildScrollView(
@@ -151,7 +152,7 @@ class _AddEventViewState extends State<AddEventView> {
                 CustomTextField(
                   controller: controllerTitle,
                   validation: (value) {
-                    return AppValidation.validateEventTitle(value);
+                    return AppValidation.validateEventTitle(context, value);
                   },
                   title: AppLocalizations.of(context)!.eventTitle,
                 ),
@@ -164,7 +165,10 @@ class _AddEventViewState extends State<AddEventView> {
                 CustomTextField(
                   controller: controllerDescription,
                   validation: (value) {
-                    return AppValidation.validateEventDescription(value);
+                    return AppValidation.validateEventDescription(
+                      context,
+                      value,
+                    );
                   },
                   maxLines: 6,
                   title: AppLocalizations.of(context)!.eventDescription,
@@ -231,8 +235,16 @@ class _AddEventViewState extends State<AddEventView> {
       FirebaseUtils.addEventInFireStore(event)
           .then((value) {
             eventProvider.getAllEvents();
-
             Navigator.pop(context);
+            Fluttertoast.showToast(
+              msg: AppLocalizations.of(context)!.event_added_successfully,
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.TOP,
+              timeInSecForIosWeb: 1,
+              backgroundColor: AppColors.greenColor,
+              textColor: AppColors.whiteColor,
+              fontSize: 16,
+            );
           })
           .catchError((error) {});
     }
