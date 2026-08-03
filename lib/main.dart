@@ -13,6 +13,7 @@ import 'package:evently_app/providers/app_language_provider.dart';
 import 'package:evently_app/providers/app_theme_provider.dart';
 import 'package:evently_app/providers/event_provider.dart';
 import 'package:evently_app/providers/user_provider.dart';
+import 'package:evently_app/services/network_listener.dart';
 import 'package:evently_app/utils/app_routes.dart';
 import 'package:evently_app/utils/app_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -44,6 +45,9 @@ class EventlyApp extends StatelessWidget {
     var languageProvider = Provider.of<AppLanguageProvider>(context);
     var themeProvider = Provider.of<AppThemeProvider>(context);
     return MaterialApp(
+      builder: (context, child) {
+        return NetworkListener(child: child!);
+      },
       debugShowCheckedModeBanner: false,
       initialRoute: AppRoutes.loginRouteName,
       routes: {

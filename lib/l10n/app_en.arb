@@ -109,5 +109,6 @@
   "event_description_required": "Event description is required",
   "event_description_min_length": "Description must be at least 10 characters",
   "event_description_max_length": "Description must be less than 500 characters",
-  "account_already_exists": "An account already exists for this email."
+  "account_already_exists": "An account already exists for this email.",
+  "no_internet": "No internet connection"
 }

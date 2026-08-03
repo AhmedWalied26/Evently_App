@@ -354,4 +354,7 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get account_already_exists =>
       'An account already exists for this email.';
+
+  @override
+  String get no_internet => 'No internet connection';
 }

@@ -109,5 +109,6 @@
   "event_description_required": "وصف الفعالية مطلوب",
   "event_description_min_length": "يجب أن يتكون الوصف من 10 أحرف على الأقل",
   "event_description_max_length": "يجب ألا يزيد الوصف عن 500 حرف",
-  "account_already_exists": "يوجد حساب مسجل بالفعل بهذا البريد الإلكتروني."
+  "account_already_exists": "يوجد حساب مسجل بالفعل بهذا البريد الإلكتروني.",
+  "no_internet": "لا يوجد اتصال بالانترنت"
 }

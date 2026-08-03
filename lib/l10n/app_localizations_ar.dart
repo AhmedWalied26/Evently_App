@@ -356,4 +356,7 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get account_already_exists =>
       'يوجد حساب مسجل بالفعل بهذا البريد الإلكتروني.';
+
+  @override
+  String get no_internet => 'لا يوجد اتصال بالانترنت';
 }

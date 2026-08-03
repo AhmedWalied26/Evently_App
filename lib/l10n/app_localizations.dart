@@ -763,6 +763,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'An account already exists for this email.'**
   String get account_already_exists;
+
+  /// No description provided for @no_internet.
+  ///
+  /// In en, this message translates to:
+  /// **'No internet connection'**
+  String get no_internet;
 }
 
 class _AppLocalizationsDelegate

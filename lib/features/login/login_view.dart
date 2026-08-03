@@ -224,7 +224,11 @@ class _LoginViewState extends State<LoginView> {
         );
         await Future.delayed(Duration(seconds: 1));
         ScaffoldMessenger.of(context).hideCurrentSnackBar();
-        Navigator.pushNamed(context, AppRoutes.homeRouteName);
+        Navigator.pushNamedAndRemoveUntil(
+          context,
+          AppRoutes.homeRouteName,
+          (route) => false,
+        );
       } on FirebaseAuthException catch (e) {
         if (e.code == 'invalid-credential') {
           ScaffoldMessenger.of(context).showSnackBar(
