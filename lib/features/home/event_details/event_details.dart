@@ -56,7 +56,7 @@ class _EventDeatilsViewState extends State<EventDeatilsView> {
             arguments: args,
           );
         },
-        title: 'Event details',
+        title: AppLocalizations.of(context)!.edit_event,
         hasIcon: true,
       ),
       body: Padding(

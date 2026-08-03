@@ -1,3 +1,4 @@
+import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:evently_app/utils/app_assets.dart';
 import 'package:evently_app/utils/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,7 @@ class DialogUtils {
                     backgroundColor: AppColors.redColor.withValues(alpha: 0.1),
                     child: SvgPicture.asset(AppAssets.trashIcon, width: 32),
                   ),
-                  Text('Delete Event?'),
+                  Text(AppLocalizations.of(context)!.delete_event_title),
                 ],
               ),
               content: Column(
@@ -35,14 +36,17 @@ class DialogUtils {
                 children: [
                   Text(
                     textAlign: .center,
-                    'Are you sure you want to delete',
+                    AppLocalizations.of(context)!.delete_event_message,
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
-                  Text(textAlign: .center, '"$eventName Event"?'),
+                  Text(
+                    textAlign: .center,
+                    '"$eventName ${AppLocalizations.of(context)!.event}"?',
+                  ),
                   SizedBox(height: 10),
                   Text(
                     textAlign: .center,
-                    'This action can`t be undone.',
+                    AppLocalizations.of(context)!.delete_event_warning,
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                   Divider(height: 30),
@@ -59,6 +63,7 @@ class DialogUtils {
                               borderRadius: .circular(8),
                             ),
                             child: Row(
+                              mainAxisAlignment: .center,
                               spacing: 4,
                               mainAxisSize: .min,
                               children: [
@@ -66,7 +71,7 @@ class DialogUtils {
                                   Icons.cancel_outlined,
                                   color: Theme.of(context).cardColor,
                                 ),
-                                Text('Cancel'),
+                                Text(AppLocalizations.of(context)!.cancel),
                               ],
                             ),
                           ),
@@ -103,13 +108,14 @@ class DialogUtils {
                                 : Row(
                                     spacing: 4,
                                     mainAxisSize: .min,
+                                    mainAxisAlignment: .center,
                                     children: [
                                       Icon(
                                         Icons.delete_outline,
                                         color: AppColors.whiteColor,
                                       ),
                                       Text(
-                                        'Delete',
+                                        AppLocalizations.of(context)!.delete,
                                         style: TextStyle(
                                           color: AppColors.whiteColor,
                                         ),

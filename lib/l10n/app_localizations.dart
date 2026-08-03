@@ -553,6 +553,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Back to Login'**
   String get back_to_login;
+
+  /// No description provided for @edit_event.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Event'**
+  String get edit_event;
+
+  /// No description provided for @event_details.
+  ///
+  /// In en, this message translates to:
+  /// **'Event Details'**
+  String get event_details;
+
+  /// No description provided for @delete_event_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Event?'**
+  String get delete_event_title;
+
+  /// No description provided for @delete_event_message.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete'**
+  String get delete_event_message;
+
+  /// No description provided for @delete_event_warning.
+  ///
+  /// In en, this message translates to:
+  /// **'This action can\'t be undone.'**
+  String get delete_event_warning;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @delete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get delete;
+
+  /// No description provided for @event.
+  ///
+  /// In en, this message translates to:
+  /// **'Event'**
+  String get event;
 }
 
 class _AppLocalizationsDelegate

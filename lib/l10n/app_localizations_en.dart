@@ -243,4 +243,28 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get back_to_login => 'Back to Login';
+
+  @override
+  String get edit_event => 'Edit Event';
+
+  @override
+  String get event_details => 'Event Details';
+
+  @override
+  String get delete_event_title => 'Delete Event?';
+
+  @override
+  String get delete_event_message => 'Are you sure you want to delete';
+
+  @override
+  String get delete_event_warning => 'This action can\'t be undone.';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get delete => 'Delete';
+
+  @override
+  String get event => 'Event';
 }

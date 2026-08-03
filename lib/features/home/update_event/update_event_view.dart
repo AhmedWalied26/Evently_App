@@ -88,7 +88,7 @@ class _UpdateEventViewState extends State<UpdateEventView> {
       AppLocalizations.of(context)!.exhibition,
     ];
     return Scaffold(
-      appBar: CustomAppbar(title: 'Edit Event'),
+      appBar: CustomAppbar(title: AppLocalizations.of(context)!.edit_event),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: width * 0.035),
         child: SingleChildScrollView(

@@ -74,5 +74,13 @@
   "email_sent": "Email sent!",
   "email_sent_description": "We've sent a password reset link to",
   "check_your_inbox": "Please check your inbox and follow\nthe instructions to reset your password.",
-  "back_to_login": "Back to Login"
+  "back_to_login": "Back to Login",
+  "edit_event": "Edit Event",
+  "event_details": "Event Details",
+  "delete_event_title": "Delete Event?",
+  "delete_event_message": "Are you sure you want to delete",
+  "delete_event_warning": "This action can't be undone.",
+  "cancel": "Cancel",
+  "delete": "Delete",
+  "event" : "Event"
 }

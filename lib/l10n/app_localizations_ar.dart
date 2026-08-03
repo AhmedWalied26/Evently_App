@@ -243,4 +243,28 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get back_to_login => 'العودة إلى تسجيل الدخول';
+
+  @override
+  String get edit_event => 'تعديل الفعالية';
+
+  @override
+  String get event_details => 'تفاصيل الفعالية';
+
+  @override
+  String get delete_event_title => 'حذف الفعالية؟';
+
+  @override
+  String get delete_event_message => 'هل أنت متأكد أنك تريد حذف';
+
+  @override
+  String get delete_event_warning => 'لا يمكن التراجع عن هذا الإجراء.';
+
+  @override
+  String get cancel => 'إلغاء';
+
+  @override
+  String get delete => 'حذف';
+
+  @override
+  String get event => 'فعالية';
 }
