@@ -218,11 +218,11 @@ class _AddEventViewState extends State<AddEventView> {
         eventDescription: controllerDescription.text,
         eventCategoryIndex: selectedTab + 1,
         eventDate: DateTime(
-          selectedDate!.year,
-          selectedDate!.month,
-          selectedDate!.day,
-          selectedTime!.hour,
-          selectedTime!.minute,
+          selectedDate?.year ?? DateTime.now().year,
+          selectedDate?.month ?? DateTime.now().month,
+          selectedDate?.day ?? DateTime.now().day,
+          selectedTime?.hour ?? DateTime.now().hour,
+          selectedTime?.minute ?? DateTime.now().minute,
         ),
       );
       setState(() {

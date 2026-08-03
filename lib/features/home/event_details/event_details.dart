@@ -6,6 +6,7 @@ import 'package:evently_app/providers/app_theme_provider.dart';
 import 'package:evently_app/utils/app_assets.dart';
 import 'package:evently_app/utils/app_routes.dart';
 import 'package:evently_app/utils/app_styles.dart';
+import 'package:evently_app/utils/dialog_utils.dart';
 import 'package:evently_app/utils/firebase_utils.dart';
 import 'package:evently_app/utils/size_utils.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +22,7 @@ class EventDeatilsView extends StatefulWidget {
 }
 
 class _EventDeatilsViewState extends State<EventDeatilsView> {
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
     var height = context.height;
@@ -30,11 +32,21 @@ class _EventDeatilsViewState extends State<EventDeatilsView> {
     return Scaffold(
       appBar: CustomAppbar(
         onTrashClick: () async {
-          await deleteEventButton(args);
-          Navigator.pushNamedAndRemoveUntil(
-            context,
-            AppRoutes.homeRouteName,
-            (route) => false,
+          DialogUtils.dialog(
+            eventName: args.eventName,
+            isLoading: isLoading,
+            context: context,
+            onCancel: () {
+              Navigator.pop(context);
+            },
+            onDelete: () async {
+              await deleteEventButton(args);
+              Navigator.pushNamedAndRemoveUntil(
+                context,
+                AppRoutes.homeRouteName,
+                (route) => false,
+              );
+            },
           );
         },
         onEditClick: () {
