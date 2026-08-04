@@ -49,7 +49,7 @@ class EventlyApp extends StatelessWidget {
         return NetworkListener(child: child!);
       },
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.loginRouteName,
+      initialRoute: AppRoutes.cusomizeRouteName,
       routes: {
         AppRoutes.cusomizeRouteName: (context) => CustomizeView(),
         AppRoutes.onboardingRouteName: (context) => OnboardingView(),
